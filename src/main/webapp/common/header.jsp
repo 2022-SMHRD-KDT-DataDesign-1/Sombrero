@@ -40,7 +40,7 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
-						Free shipping for standard order over $100
+						Designed by Sombrero
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
@@ -79,12 +79,9 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li>
-								<a href="index.jsp">메인페이지</a>
-							</li>
 
 							<li>
-								<a href="product.jsp">상품</a>
+								<a href="product.jsp">상품대여</a>
 							</li>
 
 							<li class="label1" data-label1="hot">
@@ -92,15 +89,16 @@
 							</li>
 
 							<li>
-								<a href="blog.jsp">블로그</a>
+								<a href="blog.jsp">희망상품</a>
 							</li>
 
-							<li class="active-menu">
-								<a href="about.jsp">일생일대 소개</a>
-							</li>
 
 							<li>
-								<a href="contact.jsp">연락</a>
+								<a href="contact.jsp">상품매매</a>
+							</li>
+							
+							<li class="active-menu">
+								<a href="about.jsp">일생일대 소개</a>
 							</li>
 						</ul>
 					</div>	
@@ -115,9 +113,7 @@
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-						<a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
+
 					</div>
 				</nav>
 			</div>	
