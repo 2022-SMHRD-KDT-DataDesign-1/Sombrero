@@ -45,20 +45,25 @@
 
 					<div class="right-top-bar flex-w h-full">
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Help & FAQs
+							질문게시판
 						</a>
 
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							My Account
+							내 정보
 						</a>
 
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							EN
+							회원가입
 						</a>
 
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							USD
+							로그인
 						</a>
+						
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							관리자페이지
+						</a>						
+						
 					</div>
 				</div>
 			</div>
@@ -67,7 +72,7 @@
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
-					<a href="#" class="logo">
+					<a href="index.jsp" class="logo">
 						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
 					</a>
 
@@ -75,27 +80,27 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="index.jsp">Home</a>
+								<a href="index.jsp">메인페이지</a>
 							</li>
 
 							<li>
-								<a href="product.jsp">Shop</a>
+								<a href="product.jsp">상품</a>
 							</li>
 
 							<li class="label1" data-label1="hot">
-								<a href="shoping-cart.jsp">Features</a>
+								<a href="shoping-cart.jsp">장바구니</a>
 							</li>
 
 							<li>
-								<a href="blog.jsp">Blog</a>
+								<a href="blog.jsp">블로그</a>
 							</li>
 
 							<li class="active-menu">
-								<a href="about.jsp">About</a>
+								<a href="about.jsp">일생일대 소개</a>
 							</li>
 
 							<li>
-								<a href="contact.jsp">Contact</a>
+								<a href="contact.jsp">연락</a>
 							</li>
 						</ul>
 					</div>	
@@ -161,11 +166,11 @@
 				<li>
 					<div class="right-top-bar flex-w h-full">
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							Help & FAQs
+							문의사항 게시판
 						</a>
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							My Account
+							내 정보 보기
 						</a>
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
@@ -181,12 +186,7 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="index.jsp">Home</a>
-					<ul class="sub-menu-m">
-						<li><a href="index.jsp">Homepage 1</a></li>
-						<li><a href="home-02.jsp">Homepage 2</a></li>
-						<li><a href="home-03.jsp">Homepage 3</a></li>
-					</ul>
+					<a href="index.jsp">메인페이지</a>
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 					</span>
