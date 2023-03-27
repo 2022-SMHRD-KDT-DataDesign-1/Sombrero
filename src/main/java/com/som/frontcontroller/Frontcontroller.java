@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.som.controller.DeleteService;
 import com.som.controller.LoginService;
 import com.som.controller.MessageService;
 import com.som.command.Command;
@@ -32,6 +33,8 @@ public class Frontcontroller extends HttpServlet {
 		} else if (result.equals("MessageService.do")) {
 			// 메세지 저장 기능
 			service = new MessageService();
+		} else if (result.equals("DeleteService.do"))	{
+			service = new DeleteService();
 		}
 		String moveURL = service.execute(request, response);
 		response.sendRedirect(moveURL);

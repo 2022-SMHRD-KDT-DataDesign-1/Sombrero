@@ -13,9 +13,9 @@ public class DeleteService implements Command {
 
 		String moveURL = "";
 		
-		String users_id = request.getParameter("user_id");
+		String user_id = request.getParameter("user_id");
 		
-		UsersVO vo = new UsersVO(users_id);
+		UsersVO vo = new UsersVO(user_id);
 		UsersDAO dao = new UsersDAO();
 		int cnt = dao.delete(vo);
 		
@@ -26,7 +26,7 @@ public class DeleteService implements Command {
 			System.out.println("삭제실패");
 			moveURL = "admin.jsp";
 		}
-		return null;
+		return moveURL;
 	}
 
 }

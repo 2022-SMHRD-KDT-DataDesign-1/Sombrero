@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.som.db.UsersMapper">
 
-	 <select id="selectAll" parameterType="UsersVO" resultType="UsersVO">
+	 <select id="selectAll" resultType="UsersVO">
   		select * from t_users where not(user_id='admin')
   	</select>
   

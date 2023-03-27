@@ -39,7 +39,7 @@
 				for (UsersVO m : list) {
 				%>
 				<tr>
-					<td></td>
+					<td><%=m.getUser_seq() %></td>
 					<td><%=m.getUser_id()%></td>
 					<td><%=m.getUser_name()%></td>
 					<td><%=m.getUser_nick()%></td>
@@ -66,6 +66,7 @@
 
 
 		<h1>사용자 상태 관리</h1>
+					<form>
 		<table>
 			<thead>
 				<tr>
@@ -94,6 +95,7 @@
 				<!-- 다른 사용자 데이터도 추가 -->
 			</tbody>
 		</table>
+					</form>
 
 
 		<h1>문의 사항 관리</h1>
