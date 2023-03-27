@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.som.controller.DeleteService;
 import com.som.controller.LoginService;
 import com.som.controller.MessageService;
+import com.som.controller.SaleService;
 import com.som.command.Command;
 
 
@@ -33,6 +34,9 @@ public class Frontcontroller extends HttpServlet {
 		} else if (result.equals("MessageService.do")) {
 			// 메세지 저장 기능
 			service = new MessageService();
+		}else if (result.equals("SaleService.do")) {
+			// 매매 희망 서비스
+			service = new SaleService();
 		} else if (result.equals("DeleteService.do"))	{
 			service = new DeleteService();
 		}

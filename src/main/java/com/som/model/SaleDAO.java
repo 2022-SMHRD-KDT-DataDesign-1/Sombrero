@@ -1,20 +1,21 @@
 package com.som.model;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.som.db.SqlSessionManager;
 
-public class ProductsDAO {
+public class SaleDAO {
+	
 	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 	
-	public List<ProductsVO> showProducts() {
+	// 매매 희망 상품 폼 작성
+	public int insertSale(SaleVO vo) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		List<ProductsVO> productsList = sqlSession.selectList("showProducts");
+		int cnt = sqlSession.insert("insertSale", vo);
 		sqlSession.close();
 		
-		return productsList;
+		return cnt;
 	}
+
 }

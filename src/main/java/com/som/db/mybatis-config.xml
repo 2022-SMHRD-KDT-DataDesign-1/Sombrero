@@ -9,6 +9,8 @@
 	<!-- 타입 Alias 설정해주기 -->
 	<typeAliases>
 		<typeAlias type="com.som.model.MessageVO" alias="MessageVO"/>
+		<typeAlias type="com.som.model.ProductVO" alias="ProductVO"/>
+		<typeAlias type="com.som.model.SaleVO" alias="SaleVO"/>
 		<typeAlias type="com.som.model.ProductsVO" alias="ProductsVO"/>
 		<typeAlias type="com.som.model.UsersVO" alias="UsersVO"/>
 	</typeAliases>
@@ -29,6 +31,8 @@
   <!-- sql문들을 정의 해주는 mapper.xml 생성 후 경로 지정해주는 태그 -->
   <mappers>
     <mapper resource="com/som/db/MessageMapper.xml"/>    
+    <mapper resource="com/som/db/ProductMapper.xml"/>   
+    <mapper resource="com/som/db/SaleMapper.xml"/> 
     <mapper resource="com/som/db/ProductsMapper.xml"/>    
     <mapper resource="com/som/db/UsersMapper.xml"/>    
   </mappers>
