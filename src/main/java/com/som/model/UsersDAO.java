@@ -1,0 +1,28 @@
+package com.som.model;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.som.db.SqlSessionManager;
+
+public class UsersDAO {
+	
+	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
+	
+	public List<UsersVO> selectAllUsers() {
+		List<UsersVO> list = null;
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		list = sqlSession.selectList("selectAll");
+		sqlSession.close();
+		return list;
+	}
+	
+	public int delete(UsersVO vo) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int cnt = sqlSession.delete("delete", vo);
+		sqlSession.close();
+		return cnt;
+	}
+}
