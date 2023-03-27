@@ -11,6 +11,7 @@
     <header>
         <jsp:include page="./common/header.jsp"/>
     </header>
+
 <div align="center">
 
 	<h1>전체 사용자 출력</h1>
