@@ -11,6 +11,7 @@ public class UsersVO {
 	private String user_address;
 	private String user_phone;
 	private String user_date;
+	private String user_status;
 	
 	public UsersVO() {
 		super();
@@ -24,7 +25,7 @@ public class UsersVO {
 		this.user_date = user_date;
 	}
 	public UsersVO(int user_seq, String user_id, String user_pw, String user_name, String user_nick,
-			String user_address, String user_phone, String user_date) {
+			String user_address, String user_phone, String user_date, String user_status) {
 		this.user_seq = user_seq;
 		this.user_id = user_id;
 		this.user_pw = user_pw;
@@ -33,11 +34,17 @@ public class UsersVO {
 		this.user_address = user_address;
 		this.user_phone = user_phone;
 		this.user_date = user_date;
+		this.user_status = user_status;
 	}
 	public UsersVO(String users_id) {
 		this.user_id = users_id;
 	}
 	
+	public UsersVO(String user_id, String user_status) {
+//		유저 결제 및 배송상태 진행현황 변화
+		this.user_id = user_id;
+		this.user_status = user_status;
+	}
 	public int getUser_seq() {
 		return user_seq;
 	}
@@ -61,5 +68,8 @@ public class UsersVO {
 	}
 	public String getUser_date() {
 		return user_date;
+	}
+	public String getUser_status() {
+		return user_status;
 	}
 }

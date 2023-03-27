@@ -92,11 +92,10 @@
 								<option value="resetStatus">상태초기화</option>
 						</select></td>
 						<td>
-							<button>저장</button>
+							<input type="submit" value="적용">
 						</td>
 					</tr>
 					<% }%>
-					<!-- 다른 사용자 데이터도 추가 -->
 				</tbody>
 			</table>
 		</form>

@@ -11,4 +11,12 @@
   	<delete id="delete" parameterType="UsersVO">
   		delete from t_users where user_id=#{user_id}
   	</delete>
+  	
+  	<insert id="userStatus">
+  		insert into t_users (t_status) value()
+  	</insert>
+  	
+  	<update id="updateStatus">
+  		update t_users set user_status =#{user_status} where user_id =#{;
+  	</update>
 </mapper>

@@ -25,4 +25,10 @@ public class UsersDAO {
 		sqlSession.close();
 		return cnt;
 	}
+	public int updateStatus(UsersVO vo) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int cnt = sqlSession.update("updateStatus", vo);
+		sqlSession.close();
+		return cnt;
+	}
 }
