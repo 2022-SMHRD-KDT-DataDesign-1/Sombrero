@@ -5,14 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="./assets/css/sale.css">
+<link rel="stylesheet" type="text/css" href="./css/sale.css">
 
 </head>
 <body>
 
 <%-- 	<header>
 		<jsp:include page="./common/header.jsp" />
-	</header> --%>
+	</header>  --%>
 	<div id="saleDiv">
 
 		<div id="saleForm">
@@ -22,7 +22,17 @@
 				<table id="saleTable">
 					<tr class="cateTr">
 						<th>카테고리</th>
-						<td><input type="radio" name="cate_seq" id="camping"
+						<td>
+						<select id="selectCate" name="cate_seq" onchange="categoryChange(this)">
+							<option value="">카테고리를 선택해주세요</option>
+							<option value="100">캠핑</option>
+							<option value="200">등산</option>
+							<option value="300">낚시</option>
+							<option value="400">스포츠</option>
+							<option value="500">여행</option>
+						</select>
+						
+						<!-- <input type="radio" name="cate_seq" id="camping"
 							value="100"> <label for="camping">캠핑</label> <input
 							type="radio" name="cate_seq" id="hiking" value="200"> <label
 							for="hiking">등산</label> <input type="radio" name="cate_seq"
@@ -30,7 +40,9 @@
 							<input type="radio" name="cate_seq" id="sports" value="400">
 							<label for="sports">스포츠</label> <input type="radio"
 							name="cate_seq" id="travel" value="500"> <label
-							for="travel">여행</label></td>
+							for="travel">여행</label> -->
+							
+							</td>
 					</tr>
 
 					<tr class="nameTr">
