@@ -55,18 +55,13 @@
 
 		<h1>상품 매입 관리</h1>
 		<form>
-			<label for="product-name">상품명</label> <input type="text"
-				id="product-name" name="product-name"><br> <label
-				for="purchase-price">매입가격</label> <input type="number"
-				id="purchase-price" name="purchase-price"><br> <label
-				for="purchase-date">매입일자</label> <input type="date"
-				id="purchase-date" name="purchase-date"><br>
+			<th>
 			<button type="submit">등록</button>
 		</form>
 
 
 		<h1>사용자 상태 관리</h1>
-		<form>
+		<form action="UserStatusService.do" method="post">
 			<table>
 				<thead>
 					<tr>
@@ -82,8 +77,9 @@
 				%>
 					<tr>
 						<td><%=m.getUser_id() %></td>
+						<td><%=m.getUser_id() %></td>
 						<td><%=m.getUser_name() %></td>
-						<td><select action="UserStatusService.do" method="post" name="user_status">
+						<td><select name="user_status">
 								<option value="depositcomplete">입금완료</option>
 								<option value="rentalComplete">대여완료</option>
 								<option value="returnProgress">반납진행</option>
@@ -91,9 +87,11 @@
 								<option value="wrightReview">후기 남기기</option>
 								<option value="resetStatus">상태초기화</option>
 						</select></td>
-						<td>
+						<td> 
 							<input type="submit" value="적용">
+							
 						</td>
+						
 					</tr>
 					<% }%>
 				</tbody>

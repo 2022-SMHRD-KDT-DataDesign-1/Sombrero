@@ -11,7 +11,6 @@
 		<typeAlias type="com.som.model.MessageVO" alias="MessageVO"/>
 		<typeAlias type="com.som.model.ProductVO" alias="ProductVO"/>
 		<typeAlias type="com.som.model.SaleVO" alias="SaleVO"/>
-		<typeAlias type="com.som.model.ProductsVO" alias="ProductsVO"/>
 		<typeAlias type="com.som.model.UsersVO" alias="UsersVO"/>
 	</typeAliases>
 
@@ -33,7 +32,6 @@
     <mapper resource="com/som/db/MessageMapper.xml"/>    
     <mapper resource="com/som/db/ProductMapper.xml"/>   
     <mapper resource="com/som/db/SaleMapper.xml"/> 
-    <mapper resource="com/som/db/ProductsMapper.xml"/>    
     <mapper resource="com/som/db/UsersMapper.xml"/>    
   </mappers>
 </configuration>

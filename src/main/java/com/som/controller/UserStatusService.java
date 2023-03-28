@@ -32,15 +32,16 @@ public class UserStatusService implements Command {
 		}else if(user_status.equals("resetStatus")) {
 			status = null;
 		}
+		user_status = status;
 		
 		
-		UsersVO vo = new UsersVO(user_id,status);
+		UsersVO vo = new UsersVO(user_id,user_status);
 		UsersDAO dao = new UsersDAO();
 		int cnt = dao.updateStatus(vo);
 		
 		if(cnt>0) {			
 		System.out.println("제발돼라");
-		request.getSession().setAttribute("user_status", vo);
+		request.setAttribute("user_status", vo);
 		moveURL = "admin.jsp";
 		}else {
 			System.out.println("안됐으니까 옥상 ㄱㄱ");
