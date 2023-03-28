@@ -16,11 +16,11 @@
 	</header>
 
 	<div align="center">
-	<%
+		<%
 		UsersDAO dao = new UsersDAO();
 		List<UsersVO> list = dao.selectAllUsers();
 		System.out.print(list.size());
-	%>
+		%>
 
 		<h1>전체 사용자 출력</h1>
 		<table>
@@ -39,7 +39,7 @@
 				for (UsersVO m : list) {
 				%>
 				<tr>
-					<td></td>
+					<td><%=m.getUser_seq()%></td>
 					<td><%=m.getUser_id()%></td>
 					<td><%=m.getUser_name()%></td>
 					<td><%=m.getUser_nick()%></td>
@@ -66,34 +66,39 @@
 
 
 		<h1>사용자 상태 관리</h1>
-		<table>
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>이름</th>
-					<th>상태</th>
-					<th>수정</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>홍길동</td>
-					<td><select name="user-status">
-							<option value="normal">입금대기</option>
-							<option value="normal">발송준비</option>
-							<option value="normal">대여완료</option>
-							<option value="normal">반납진행</option>
-							<option value="normal">반납완료</option>
-							<option value="normal">후기 남기기</option>
-					</select></td>
-					<td>
-						<button>저장</button>
-					</td>
-				</tr>
-				<!-- 다른 사용자 데이터도 추가 -->
-			</tbody>
-		</table>
+		<form>
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>이름</th>
+						<th>상태</th>
+						<th>수정</th>
+					</tr>
+				</thead>
+				<tbody>
+				<%
+				for (UsersVO m : list) {
+				%>
+					<tr>
+						<td><%=m.getUser_id() %></td>
+						<td><%=m.getUser_name() %></td>
+						<td><select action="UserStatusService.do" method="post" name="user_status">
+								<option value="depositcomplete">입금완료</option>
+								<option value="rentalComplete">대여완료</option>
+								<option value="returnProgress">반납진행</option>
+								<option value="returnComplete">반납완료</option>
+								<option value="wrightReview">후기 남기기</option>
+								<option value="resetStatus">상태초기화</option>
+						</select></td>
+						<td>
+							<input type="submit" value="적용">
+						</td>
+					</tr>
+					<% }%>
+				</tbody>
+			</table>
+		</form>
 
 
 		<h1>문의 사항 관리</h1>
