@@ -33,15 +33,10 @@
   <mappers>
     <mapper resource="com/som/db/MessageMapper.xml"/>    
     <mapper resource="com/som/db/ProductMapper.xml"/>   
-<<<<<<< HEAD
     <mapper resource="com/som/db/SaleMapper.xml"/>   
     <mapper resource="com/som/db/UsersMapper.xml"/>  
     <mapper resource="com/som/db/CartMapper.xml"/>    
     <mapper resource="com/som/db/OrderMapper.xml"/>    
-=======
-    <mapper resource="com/som/db/SaleMapper.xml"/> 
-    <mapper resource="com/som/db/UsersMapper.xml"/>    
->>>>>>> 770ddba1e5fa369cae412855d082698eb9dea2f7
   </mappers>
 </configuration>
 
