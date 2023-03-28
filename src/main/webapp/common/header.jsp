@@ -124,7 +124,7 @@
 
 
 							<li>
-								<a href="contact.jsp">상품매매</a>
+								<a href="sale.jsp">상품매매</a>
 							</li>
 							
 							<li class="active-menu">

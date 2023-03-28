@@ -30,7 +30,9 @@ public class SaleService implements Command {
 			
 			int user_seq = 1;
 			// int cate_seq = Integer.parseInt(multi.getParameter("cate_seq"));
-			int cate_seq = 20;
+			int cate_depth1 = Integer.parseInt(multi.getParameter("cate_depth1"));
+			int cate_depth2 = Integer.parseInt(multi.getParameter("cate_depth2"));
+			
 			String sale_name = multi.getParameter("sale_name");
 			int sale_price  = Integer.parseInt(multi.getParameter("sale_price"));
 			String sale_content = multi.getParameter("sale_content");
@@ -40,7 +42,7 @@ public class SaleService implements Command {
 			int sale_account = Integer.parseInt(multi.getParameter("sale_account"));
 			String sale_check = multi.getParameter("sale_check");
 			
-			SaleVO vo = new SaleVO(user_seq, cate_seq, sale_photo, sale_name, sale_price, sale_content, sale_account, sale_bank, sale_acc_holder, sale_check);
+			SaleVO vo = new SaleVO(user_seq, sale_photo, sale_name, sale_price, sale_content, sale_account, sale_bank, sale_acc_holder, sale_check, cate_depth1, cate_depth2);
 			SaleDAO dao = new SaleDAO();
 			
 			int cnt = dao.insertSale(vo);
