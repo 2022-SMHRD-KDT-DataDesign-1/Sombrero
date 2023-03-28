@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.som.controller.DeleteCart;
 import com.som.controller.DeleteService;
+import com.som.controller.GetProductDetail;
+import com.som.controller.InsertCart;
 import com.som.controller.LoginService;
 import com.som.controller.MessageService;
 import com.som.controller.SaleService;
@@ -39,7 +42,18 @@ public class Frontcontroller extends HttpServlet {
 			service = new SaleService();
 		} else if (result.equals("DeleteService.do"))	{
 			service = new DeleteService();
+		} else if (result.equals("GetProductDetail.do")) {
+			// 상품 정보 가져오기
+			service = new GetProductDetail();
+		} else if (result.equals("InsertCart.do")) {
+			// 장바구니 업뎃
+			service = new InsertCart();
+		} else if (result.equals("DeleteCart.do")) {
+			// 장바구니 삭제
+			service = new DeleteCart();
 		}
+		
+		
 		String moveURL = service.execute(request, response);
 		response.sendRedirect(moveURL);
 	}

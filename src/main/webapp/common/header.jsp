@@ -1,3 +1,7 @@
+<%@page import="com.som.model.CartDAO"%>
+<%@page import="com.som.model.CartVO"%>
+<%@page import="java.util.List"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,7 +9,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
 <!--===============================================================================================-->
@@ -24,6 +27,12 @@
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 <!--===============================================================================================-->
@@ -34,6 +43,27 @@
 <body>
 	<!-- Header -->
 	<header class="header-v4">
+		<!-- Header desktop -->
+		<%  
+		DecimalFormat formatter = new DecimalFormat("###,###");
+		// 사용자 정보
+		int user_seq = 0;
+		
+		user_seq = 1;
+		
+		int total_price = 0;
+		int product_price = 0;
+		int product_quantity = 0;
+		int product_period = 0;
+		int product_size = 0;
+		List<CartVO> list = null;
+		if(user_seq > 0){
+			list = new CartDAO().printCart(user_seq);
+			product_size = list.size();
+			// System.out.println("seq:" + list.get(0).getCart_seq());
+					
+		} %>
+	
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
@@ -85,7 +115,7 @@
 							</li>
 
 							<li class="label1" data-label1="hot">
-								<a href="shoping-cart.jsp">장바구니</a>
+								<a href="shopping-cart.jsp">장바구니</a>
 							</li>
 
 							<li>
@@ -108,11 +138,10 @@
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
 							<i class="zmdi zmdi-search"></i>
 						</div>
-
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+						<!-- data-notify : 장바구니 숫자 표시 -->
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="<%=product_size %>">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
-
 
 					</div>
 				</nav>
@@ -131,11 +160,10 @@
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
 					<i class="zmdi zmdi-search"></i>
 				</div>
-
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="<%=product_size %>">
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
-
+				
 				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
 					<i class="zmdi zmdi-favorite-outline"></i>
 				</a>
@@ -193,7 +221,7 @@
 				</li>
 
 				<li>
-					<a href="shoping-cart.jsp" class="label1 rs1" data-label1="hot">Features</a>
+					<a href="shopping-cart.jsp" class="label1 rs1" data-label1="hot">Features</a>
 				</li>
 
 				<li>
@@ -243,67 +271,44 @@
 			</div>
 			
 			<div class="header-cart-content flex-w js-pscroll">
+			<% if(user_seq == 0){ %>
+				<ul class="header-cart-wrapitem w-full">상품을 추가해 주세요.</ul>
+			<% } else { %>
 				<ul class="header-cart-wrapitem w-full">
+					<%for(CartVO a: list) {
+						product_price = a.getProduct_price();
+						product_quantity = a.getCart_quantity();
+						product_period = a.getCart_period();
+						total_price += product_price*product_quantity*(product_period/7);
+					 %>
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
 							<img src="images/item-cart-01.jpg" alt="IMG">
 						</div>
-
 						<div class="header-cart-item-txt p-t-8">
 							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								White Shirt Pleat
+								<%=a.getProduct_name() %>
 							</a>
 
 							<span class="header-cart-item-info">
-								1 x $19.00
+								<%=a.getCart_quantity() %> * <%=formatter.format(product_price*(product_period/7)) %>
 							</span>
 						</div>
 					</li>
 
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-02.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Converse All Star
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $39.00
-							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-03.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Nixon Porter Leather
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $17.00
-							</span>
-						</div>
-					</li>
 				</ul>
-				
+				<%}} %>
 				<div class="w-full">
 					<div class="header-cart-total w-full p-tb-40">
-						Total: $75.00
+						Total: <%=total_price %>
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
-						<a href="shoping-cart.jsp" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						<a href="shopping-cart.jsp" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 							View Cart
 						</a>
 
-						<a href="shoping-cart.jsp" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+						<a href="shopping-cart.jsp" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
 							Check Out
 						</a>
 					</div>

@@ -1937,17 +1937,23 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .table-shopping-cart .column-4 {
-  width: 145px;
-  text-align: right;
+  width: 180px;
+  text-align: center;
 }
 
 .table-shopping-cart .column-5 {
+  width: 172px;
+  text-align: center;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+.table-shopping-cart .column-6 {
   width: 172px;
   padding-right: 50px;
   text-align: right;
   font-size: 16px;
 }
-
 .table-shopping-cart .table_row {
   height: 185px;
 }
@@ -2564,11 +2570,11 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .size-205 {
-  width: 145px;
+  width: 130px;
 }
 
 .size-206 {
-  width: calc(100% - 145px);
+  width: calc(100% - 130px);
 }
 
 .size-207 {
