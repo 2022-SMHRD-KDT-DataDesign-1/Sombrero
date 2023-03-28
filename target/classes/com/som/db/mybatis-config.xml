@@ -31,7 +31,7 @@
   <mappers>
     <mapper resource="com/som/db/MessageMapper.xml"/>    
     <mapper resource="com/som/db/ProductMapper.xml"/>   
-    <mapper resource="com/som/db/SaleMapper.xml"/>   
+    <mapper resource="com/som/db/SaleMapper.xml"/> 
     <mapper resource="com/som/db/UsersMapper.xml"/>    
   </mappers>
 </configuration>
