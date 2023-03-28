@@ -73,9 +73,10 @@
   	margin: 5px;
   }
   
- input, textarea, label {
+ #saleForm> input, textarea, label {
     outline: none;
     border: none;
+    display: inline;
 }
 
 #account>td,tr {
