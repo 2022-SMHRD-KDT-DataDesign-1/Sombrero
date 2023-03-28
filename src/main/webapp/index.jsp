@@ -397,7 +397,7 @@
 							<!--  -->
 							<div class="p-t-33">
 								<div class="flex-w flex-r-m p-b-10">
-									<div class="size-203 flex-c-m respon6">
+								<div class="size-203 flex-c-m respon6">
 										Size
 									</div>
 

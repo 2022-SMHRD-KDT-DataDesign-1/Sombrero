@@ -8,18 +8,23 @@
 <head>
 <meta charset="UTF-8">
 <title>admin</title>
+<script>
+   /*  function formSubmit()
+    {document.getElementById("frm1").submit();} */
+</script>
+
 </head>
 <body>
-
-	<header>
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<%-- <header>
 		<jsp:include page="./common/header.jsp" />
-	</header>
+	</header> --%>
 
 	<div align="center">
 		<%
 		UsersDAO dao = new UsersDAO();
 		List<UsersVO> list = dao.selectAllUsers();
-		System.out.print(list.size());
+		/* System.out.print(list.size()); */
 		%>
 
 		<h1>전체 사용자 출력</h1>
@@ -55,13 +60,20 @@
 
 		<h1>상품 매입 관리</h1>
 		<form>
-			<th>
-			<button type="submit">등록</button>
+			<table>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</table>
 		</form>
 
 
+
 		<h1>사용자 상태 관리</h1>
-		<form action="UserStatusService.do" method="post">
 			<table>
 				<thead>
 					<tr>
@@ -72,31 +84,34 @@
 					</tr>
 				</thead>
 				<tbody>
-				<%
-				for (UsersVO m : list) {
+
+					<% 
+				for (int i = 0; i < list.size(); i++) {
+					
 				%>
 					<tr>
-						<td><%=m.getUser_id() %></td>
-						<td><%=m.getUser_id() %></td>
-						<td><%=m.getUser_name() %></td>
-						<td><select name="user_status">
-								<option value="depositcomplete">입금완료</option>
-								<option value="rentalComplete">대여완료</option>
-								<option value="returnProgress">반납진행</option>
-								<option value="returnComplete">반납완료</option>
-								<option value="wrightReview">후기 남기기</option>
-								<option value="resetStatus">상태초기화</option>
-						</select></td>
-						<td> 
-							<input type="submit" value="적용">
-							
+						<td><%=list.get(i).getUser_id() %></td>
+						<td><%=list.get(i).getUser_name() %></td>
+						<td>
+							<select name="user_status" class="seStatus">
+								<option>입금완료</option>
+								<option>대여완료</option>
+								<option>반납진행</option>
+								<option>반납완료</option>
+								<option>후기 남기기</option>
+								<option>상태초기화</option>
+							</select><input type="hidden" value="" class="status<%= i %>">
+							<input type="hidden" class="seq<%=i %>" value="<%= list.get(i).getUser_seq() %>">
 						</td>
-						
+						<td>
+							<button type="button" onclick="changeStatus(<%= i %>)">상태변경</button>
+						</td>
 					</tr>
 					<% }%>
 				</tbody>
 			</table>
-		</form>
+		
+	
 
 
 		<h1>문의 사항 관리</h1>
@@ -137,22 +152,40 @@
 					<td>상품A</td>
 					<td>100</td>
 					<td>
-						<form>
+						<!-- <form>
 							<label for="productA-stock">재고량</label> <input type="number"
 								id="productA-stock" name="productA-stock">
 							<button type="submit">저장</button>
-						</form>
+						</form> -->
 					</td>
 				</tr>
 				<!-- 다른 상품 데이터도 추가 -->
 			</tbody>
 		</table>
 
-		<footer>
+		<%-- <footer>
 			<jsp:include page="./common/footer.jsp" />
-		</footer>
+		</footer> --%>
 
 	</div>
+	
+	
+		<script type="text/javascript">
+		
+		$('.seStatus').change(function(){
+			this.nextSibling.value=this.value;
+			console.log(this.nextSibling.value);
+		});
+			
+		
+		function changeStatus(i){
+			var status = $('.status'+i).val();
+			var seq = $('.seq'+i).val();
+			console.log(i+"/"+status+"/"+seq);
+			location.href="UserStatusService.do?status="+status+"&seq="+seq;
+		};
+		
+		</script>
 
 </body>
 </html>
