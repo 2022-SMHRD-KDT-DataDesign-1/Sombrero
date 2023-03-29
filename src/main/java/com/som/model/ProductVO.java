@@ -16,6 +16,11 @@ public class ProductVO {
 	private int cate_depth1;
 	private String photo_path;
 	
+	
+	public ProductVO() {
+		super();
+	}
+	
 	public ProductVO(int product_seq, int cate_seq, int photo_seq, String product_name, int product_price,
 			String product_content, Timestamp product_date, int product_have, int product_rent, int product_rest,
 			int cate_depth1, String photo_path) {
@@ -50,10 +55,6 @@ public class ProductVO {
 		this.product_rest = product_rest;
 		this.cate_depth1 = cate_depth1;
 	}
-	
-	public ProductVO() {
-		super();
-	}
 
 	public ProductVO(int product_seq, int cate_seq, int photo_seq, String product_name,
 			int product_price, String product_content, Timestamp product_date, int product_have,
@@ -81,8 +82,6 @@ public class ProductVO {
 	      this.product_have = product_have;
 	      this.photo_path = photo_path;
 	   }
-
-
 
 	public int getProduct_seq() {
 		return product_seq;

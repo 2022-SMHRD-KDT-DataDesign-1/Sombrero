@@ -3,11 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.som.db.SaleMapper">
-	<insert id="insertSale" parameterType="SaleVO">insert into t_sale values (num_sale.nextval,#{user_seq},#{cate_seq},#{sale_photo},#{sale_name},#{sale_price},#{sale_content},#{sale_account},#{sale_bank},#{sale_acc_holder},#{sale_check},sysdate,null)</insert>
+	<insert id="insertSale" parameterType="SaleVO">insert into t_sale values (num_sale.nextval,#{user_seq},(select cate_seq from t_category where cate_depth1 = #{cate_depth1} and cate_depth2 = #{cate_depth2}),#{sale_photo},#{sale_name},#{sale_price},#{sale_content},#{sale_account},#{sale_bank},#{sale_acc_holder},#{sale_check},sysdate,null)</insert>
   	<select id="selectAllSale" parameterType="SaleVO" resultType="SaleVO">
   		select * from t_sale
   	</select>
-
-
-
 </mapper>

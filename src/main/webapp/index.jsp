@@ -281,7 +281,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-						<%
+						<% int product_seq = p.getProduct_seq();
 								String[] photo_path = p_dao.getPhotoPath(p.getPhoto_seq()).get(0).getPhoto_path().split(";");
 							%>
 							<img src=<%=photo_path[0] %> alt="IMG-PRODUCT">
@@ -293,7 +293,7 @@
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+								<a href="GetProductDetail.do?product_seq=<%=product_seq %>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									<%= p.getProduct_name() %>
 								</a>
 

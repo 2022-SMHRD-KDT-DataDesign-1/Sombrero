@@ -1,5 +1,8 @@
 package com.som.model;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class UsersVO {
 
 	
@@ -13,11 +16,7 @@ public class UsersVO {
 	private String user_date;
 	private String user_status;
 	
-	public UsersVO() {
-		super();
-	}
 	public UsersVO(int user_seq, String user_id, String user_name, String user_nick, String user_date) {
-		super();
 		this.user_seq = user_seq;
 		this.user_id = user_id;
 		this.user_name = user_name;
@@ -26,6 +25,7 @@ public class UsersVO {
 	}
 	public UsersVO(int user_seq, String user_id, String user_pw, String user_name, String user_nick,
 			String user_address, String user_phone, String user_date, String user_status) {
+			super();
 		this.user_seq = user_seq;
 		this.user_id = user_id;
 		this.user_pw = user_pw;
@@ -36,7 +36,16 @@ public class UsersVO {
 		this.user_date = user_date;
 		this.user_status = user_status;
 	}
+	public UsersVO(String user_id, String user_pw) {
+		this.user_id = user_id;
+		this.user_pw = user_pw;
+	}
 	
+	public UsersVO(String user_id, String user_pw, String user_name) {
+		this.user_id = user_id;
+		this.user_pw = user_pw;
+		this.user_name = user_name;
+	}
 	
 	public UsersVO(String user_id) {
 		this.user_id = user_id;
@@ -79,5 +88,15 @@ public class UsersVO {
 	}
 	public String getUser_status() {
 		return user_status;
+	}
+	public UsersVO(String user_id, String user_pw, String user_name, String user_nick, String user_address,
+			String user_phone) {
+		super();
+		this.user_id = user_id;
+		this.user_pw = user_pw;
+		this.user_name = user_name;
+		this.user_nick = user_nick;
+		this.user_address = user_address;
+		this.user_phone = user_phone;
 	}
 }

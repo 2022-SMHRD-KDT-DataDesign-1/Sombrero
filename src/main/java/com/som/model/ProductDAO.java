@@ -37,4 +37,15 @@ public class ProductDAO {
 		
 		return photo_path;
 	}
+	
+	// 상품 seq로 상품 상세 정보 가져오기
+	public ProductVO getProductDetail(int product_seq) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		ProductVO list = sqlSession.selectOne("com.som.db.ProductMapper.getProductDetail", product_seq);
+		sqlSession.close();
+		
+		return list;
+	}
+	
+	
 }

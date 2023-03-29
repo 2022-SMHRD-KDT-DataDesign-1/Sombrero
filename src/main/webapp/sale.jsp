@@ -5,14 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="./assets/css/sale.css">
+<link rel="stylesheet" type="text/css" href="./css/sale.css">
 
 </head>
 <body>
 
-<%-- 	<header>
+	<header>
 		<jsp:include page="./common/header.jsp" />
-	</header> --%>
+	</header>
+	
 	<div id="saleDiv">
 
 		<div id="saleForm">
@@ -22,15 +23,21 @@
 				<table id="saleTable">
 					<tr class="cateTr">
 						<th>카테고리</th>
-						<td><input type="radio" name="cate_seq" id="camping"
-							value="100"> <label for="camping">캠핑</label> <input
-							type="radio" name="cate_seq" id="hiking" value="200"> <label
-							for="hiking">등산</label> <input type="radio" name="cate_seq"
-							id="fishing" value="300"> <label for="fishing">낚시</label>
-							<input type="radio" name="cate_seq" id="sports" value="400">
-							<label for="sports">스포츠</label> <input type="radio"
-							name="cate_seq" id="travel" value="500"> <label
-							for="travel">여행</label></td>
+						<td>
+						<select id="selectCate1" name="cate_depth1" onchange="categoryChange(this)">
+							<option>카테고리를 선택해주세요</option>
+							<option value="100">캠핑</option>
+							<option value="200">등산</option>
+							<option value="300">낚시</option>
+							<option value="400">스포츠</option>
+							<option value="500">여행</option>
+						</select>
+						
+						<select id="selectCate2" name="cate_depth2">
+							<option>물품을 선택해주세요</option>
+						</select>
+													
+							</td>
 					</tr>
 
 					<tr class="nameTr">
@@ -42,7 +49,7 @@
 						<th>희망가격</th>
 						<td><input type='text'
 							onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
-							name='sale_price'>원</td>
+							name='sale_price' style="display: inline">원</td>
 					</tr>
 
 					<tr class="contentTr">
@@ -117,9 +124,9 @@
 					<tr class="returnTr">
 						<th>매일 불가 상품 처리 방법</th>
 						<td><input type="radio" name="sale_check" id="dispose"
-							value="폐기"> <label for="dispose">폐기</label> <input
-							type="radio" name="sale_check" id="return" value="반송"> <label
-							for="return">반송</label>
+							value="폐기" style="display: inline"> <label for="dispose" style="display: inline">폐기</label> <input
+							type="radio" name="sale_check" id="return" value="반송" style="display: inline"> <label
+							for="return" style="display: inline">반송</label>
 							<div><ul class="ulClass">
 							<li> 폐기 : 매입 불가 또는 신청내역에 없는 상품은 즉시 폐기되며, 돌려받을 수 없습니다.</li>
 							<li>반송 : 반송비는 고객 부담이며 별도 요청 없을 시 '발송 주소'로 반송됩니다. (반송료 - 박스당 1500원)</li></ul></div>
@@ -160,8 +167,12 @@
 			</form>
 		</div>
 	</div>
+	
+	<header>
+		<jsp:include page="./common/footer.jsp" />
+	</header>
 
 
-	<script src="./assets/js/sale.js" type="text/javascript"></script>
+	<script src="./js/sale.js" type="text/javascript"></script>
 </body>
 </html>

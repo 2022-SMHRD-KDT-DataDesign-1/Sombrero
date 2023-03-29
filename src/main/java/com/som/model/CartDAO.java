@@ -7,32 +7,33 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.som.db.SqlSessionManager;
 
-	public class inquiryDAO {
-
+public class CartDAO {
 	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
-
-	public int uploadInquiry(InquiryVO vo) {
+	
+	// 장바구니 업데이트
+	public int insertCart(CartVO cartVo) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		int cnt = sqlSession.insert("uploadInquiry", vo);
+		int res = sqlSession.insert("com.som.db.CartMapper.insertCart", cartVo);
 		sqlSession.close();
-		return cnt;
+		return res;
 	}
-
-	public List<InquiryVO> showInquiry() {
-		List<InquiryVO> list = null;
+	
+	// 장바구니 불러오기
+	public List<CartVO> printCart(int user_seq) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		list = sqlSession.selectList("showInquiry");
+		List<CartVO> list = sqlSession.selectList("com.som.db.CartMapper.printCart", user_seq);
 		sqlSession.close();
 		return list;
 	}
-
-	// 세부 게시글 조회
-	public InquiryVO detailInquiry(int num) {
+	
+	// 장바구니 삭제
+	public int deleteCart(int cart_seq) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		InquiryVO vo = sqlSession.selectOne("detailInquiry", num);
+		int res = sqlSession.delete("com.som.db.CartMapper.deleteCart", cart_seq);
 		sqlSession.close();
-
-		return vo;
+		return res;
 	}
-
+	
+	
+	
 }

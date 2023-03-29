@@ -23,10 +23,10 @@ public class SaleDAO {
 
 	// 매매 상품 리스트
 
-	public List<SaleVO> selectAllMember() {
+	public List<SaleVO> selectAllSale() {
 		List<SaleVO> list = null;
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		list = sqlSession.selectList("selectAll");
+		list = sqlSession.selectList("selectAllSale");
 		sqlSession.close();
 		return list;
 	}
