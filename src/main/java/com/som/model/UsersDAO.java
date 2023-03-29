@@ -32,17 +32,17 @@ public class UsersDAO {
 		return cnt;
 	}
 	
-	public int insertMember(UsersVO vo) {
+	public int insertUser(UsersVO vo) {
 		SqlSession sqlSession =sqlSessionFactory.openSession(true);
-	int cnt = sqlSession.insert("insertMember",vo);
+	int cnt = sqlSession.insert("insertUser",vo);
 			sqlSession.close();
 			return cnt;
 	}
    public UsersVO login(UsersVO vo) {
-	   UsersVO loginMember= null;  
+	   UsersVO loginUser= null;  
 	   SqlSession sqlSession = sqlSessionFactory.openSession(true);
-	   loginMember = sqlSession.selectOne("login",vo);
+	   loginUser = sqlSession.selectOne("login",vo);
 	   sqlSession.close();
-	   return loginMember;
+	   return loginUser;
    }  
 }

@@ -14,12 +14,11 @@ public class LoginService implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		UsersVO login_vo = null;
 		
-		String ip = request.getRemoteAddr();
-		
-		
 		//request.setCharacterEncoding("UTF-8");
 		String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
+		
+		System.out.println(user_id+user_pw);
 		
 		UsersVO vo = new UsersVO(user_id,user_pw);
 		UsersDAO dao = new UsersDAO();
@@ -33,15 +32,10 @@ public class LoginService implements Command {
 		}else {
 			System.out.println("로그인 실패");
 		//	response.sendRedirect("Login.jsp");
-			 
-			 
-			 
+	 
 		}
-		
-		
-		
-		
-		return "Main.jsp";
+
+		return "index.jsp";
 	}
 
 	}

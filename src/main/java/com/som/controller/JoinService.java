@@ -24,7 +24,7 @@ public class JoinService implements Command {
 		
 		UsersVO vo = new UsersVO(user_id,user_pw,user_name,user_address,user_nick,user_phone);
 		UsersDAO dao = new UsersDAO();
-		int cnt = dao.insertMember(vo);
+		int cnt = dao.insertUser(vo);
 		
 		if(cnt>0) {
 			
@@ -33,8 +33,8 @@ public class JoinService implements Command {
 //			request.setAttribute("joinEmail",email);  // 속성(name),값(value)  
 //			rd.forward(request, response);
 	//      response.sendRedirect("JoinSuccess.jsp?joinEmail="+ email);
-			moveURL = "joinSuccess.jsp?user_id="+user_id ;
-			moveURL = "joinSuccess.jsp?user_name="+user_name ;
+			moveURL = "joinSuccess.jsp?user_id="+user_id+"&user_name="+user_name ;
+			
 		}else {
 		
 		//	response.sendRedirect("Main.jsp");

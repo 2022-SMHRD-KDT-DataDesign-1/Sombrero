@@ -12,6 +12,7 @@ import com.som.controller.DeleteService;
 import com.som.controller.GetProductDetail;
 import com.som.controller.InquiryService;
 import com.som.controller.InsertCart;
+import com.som.controller.JoinService;
 import com.som.controller.LoginService;
 import com.som.controller.MessageService;
 import com.som.controller.SaleService;
@@ -60,6 +61,8 @@ public class Frontcontroller extends HttpServlet {
 		} else if (result.equals("InquiryService.do")) {
 			// 문의 게시판
 			service = new InquiryService();
+		} else if (result.equals("JoinService.do")) {
+			service = new JoinService();
 		}
 		
 		

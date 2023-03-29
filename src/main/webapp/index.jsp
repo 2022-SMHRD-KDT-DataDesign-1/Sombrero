@@ -1,3 +1,4 @@
+<%@page import="com.som.model.UsersVO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="com.som.model.ProductVO"%>
 <%@page import="java.util.List"%>
@@ -49,6 +50,12 @@
         <jsp:include page="./common/header.jsp"/>
     </header>
 		
+		<%
+			UsersVO login_vo = (UsersVO)session.getAttribute("login_vo");
+			if(login_vo != null){
+				System.out.print(login_vo.getUser_id());				
+			}
+		%>
 
 	<!-- Slider -->
 	<section class="section-slide">
