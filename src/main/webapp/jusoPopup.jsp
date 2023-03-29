@@ -1,79 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
-<% 
-	request.setCharacterEncoding("UTF-8");  //한글깨지면 주석제거
-	//request.setCharacterEncoding("EUC-KR");  //해당시스템의 인코딩타입이 EUC-KR일경우에
-	String inputYn = request.getParameter("inputYn"); 
-	String roadFullAddr = request.getParameter("roadFullAddr"); 
-	String roadAddrPart1 = request.getParameter("roadAddrPart1"); 
-	String roadAddrPart2 = request.getParameter("roadAddrPart2"); 
-	String engAddr = request.getParameter("engAddr"); 
-	String jibunAddr = request.getParameter("jibunAddr"); 
-	String zipNo = request.getParameter("zipNo"); 
-	String addrDetail = request.getParameter("addrDetail"); 
-	String admCd    = request.getParameter("admCd");
-	String rnMgtSn = request.getParameter("rnMgtSn");
-	String bdMgtSn  = request.getParameter("bdMgtSn");
-	/** API 서비스 제공항목 확대 (2017.02) **/
-	String detBdNmList  = request.getParameter("detBdNmList");
-	String bdNm  = request.getParameter("bdNm");
-	String bdKdcd  = request.getParameter("bdKdcd");
-	String siNm  = request.getParameter("siNm");
-	String sggNm  = request.getParameter("sggNm");
-	String emdNm  = request.getParameter("emdNm");
-	String liNm  = request.getParameter("liNm");
-	String rn  = request.getParameter("rn");
-	String udrtYn  = request.getParameter("udrtYn");
-	String buldMnnm  = request.getParameter("buldMnnm");
-	String buldSlno  = request.getParameter("buldSlno");
-	String mtYn  = request.getParameter("mtYn");
-	String lnbrMnnm  = request.getParameter("lnbrMnnm");
-	String lnbrSlno  = request.getParameter("lnbrSlno");
-	String emdNo  = request.getParameter("emdNo");
-%>
 </head>
-<script language="javascript">
-//opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("주소입력화면 소스"도 동일하게 적용시켜야 합니다.)
-//document.domain = "abc.go.kr";
-
-function init(){
-	var url = location.href;
-	var confmKey = "devU01TX0FVVEgyMDIzMDMyMDE2MDY1MjExMzYwODA=";//승인키
-	// resultType항목 추가(2016.10.06)
-	var resultType = "4"; // 도로명주소 검색결과 화면 출력유형, 1 : 도로명, 2 : 도로명+지번, 3 : 도로명+상세건물명, 4 : 도로명+지번+상세건물명
-	var inputYn= "<%=inputYn%>";
-	if(inputYn != "Y"){
-		document.form.confmKey.value = confmKey;
-		document.form.returnUrl.value = url;
-		document.form.resultType.value = resultType; // resultType항목 추가(2016.10.06)
-		document.form.action="https://business.juso.go.kr/addrlink/addrLinkUrl.do"; // 인터넷망
-		//document.form.action="https://business.juso.go.kr/addrlink/addrMobileLinkUrl.do"; //모바일 웹인 경우, 인터넷망
-		document.form.submit();
-	}else{
-		/** API 서비스 제공항목 확대 (2017.02) **/
-		opener.jusoCallBack("<%=roadFullAddr%>","<%=roadAddrPart1%>","<%=addrDetail%>", "<%=roadAddrPart2%>","<%=engAddr%>"
-			, "<%=jibunAddr%>","<%=zipNo%>", "<%=admCd%>", "<%=rnMgtSn%>", "<%=bdMgtSn%>", "<%=detBdNmList%>"
-			, "<%=bdNm%>", "<%=bdKdcd%>", "<%=siNm%>", "<%=sggNm%>", "<%=emdNm%>", "<%=liNm%>", "<%=rn%>", "<%=udrtYn%>"
-			, "<%=buldMnnm%>", "<%=buldSlno%>", "<%=mtYn%>", "<%=lnbrMnnm%>", "<%=lnbrSlno%>", "<%=emdNo%>");
-		window.close();
-	}
-}
-</script>
-<body onload="init();">
-	<form id="form" name="form" method="post">
-		<input type="hidden" id="confmKey" name="confmKey" value=""/>
-		<input type="hidden" id="returnUrl" name="returnUrl" value=""/>
-		<input type="hidden" id="resultType" name="resultType" value=""/> // resultType항목 추가(2016.10.06)
-		<!-- 해당시스템의 인코딩타입이 EUC-KR일경우에만 추가 START--> 
-		<!-- 
-		<input type="hidden" id="encodingType" name="encodingType" value="EUC-KR"/>
-		 -->
-		<!-- 해당시스템의 인코딩타입이 EUC-KR일경우에만 추가 END-->
-	</form>
+<body>
+<form action="JoinPage.jsp" name="form" id="form" method="post">
+      <table >
+         <colgroup>
+            <col style="width:20%"><col>
+         </colgroup>
+         <tbody>
+            <tr>
+               <th>������ȣ</th>
+               <td>
+                   <input type="text" id="confmKey" name="confmKey" value="500"  >-
+                  <input type="text" id="zipNo" value="100" name="zipNo" readonly style="width:100px">
+                  
+               </td>
+            </tr>
+            <tr>
+               <th>���θ��ּ�</th>
+               <td><input type="text" id="roadAddrPart1" style="width:85%" name="addr1"></td>
+            </tr>
+            <tr>
+               <th>���ּ�</th>
+               <td>
+                  <input type="text" id="addrDetail" style="width:40%" value="">
+                  <input type="text" id="roadAddrPart2"  style="width:40%" value="">
+               <span align="right"><input type="submit" value="�Ϸ�"></span>
+               </td>
+            </tr>
+            </tbody>
+         </table>
+   </form>
 </body>
 </html>
+
+<script src="js/jusoPopup.js"></script>
+

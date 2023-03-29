@@ -1,0 +1,283 @@
+/*<script>
+// 본인인증 구분
+$(".memo").hide();
+
+// 입력값 체크
+$("#userid").bind({
+	keyup : function() {$("#userid").val($("#userid").val().toLowerCase());},
+	change : function() {valid_userid = false;JoinRegFormPCLS.changeUserId();},
+	blur : function() {MemberCommonCLS.idcheck();},
+	keypress : function(e) {if (e.keyCode == 13) $(this).blur();}
+});
+$("#passwd, #passwd2").focusout(function() {JoinRegFormPCLS.checkPassWd()});
+$("#usernm").focusout(function() {JoinRegFormPCLS.checkUserNm();});
+$("input[name='gender']").click(function() {JoinRegFormPCLS.checkGender()});
+
+
+$("#birthdate").bind("focusout change blur", function() {
+	JoinRegFormPCLS.checkBirthDay();
+});
+$("#htel1, #htel2, #htel3, #htel")
+	.focusout(function() {JoinRegFormPCLS.checkHtel()})
+	.change(function() {JoinRegFormPCLS.resetCert()});
+$("#certnum").focusout(function() {
+	if ($("#certnum").val() != "") {
+		JoinRegFormPCLS.doSubmitCertNum();
+	}
+});
+
+// 이메일
+$("#email1, #email2, #email").focusout(function(e) {
+	if (email_focus) {
+		MemberCommonCLS.setEmail($("#email").val());
+		if ($("#email1").val() != "") {
+			JoinRegFormPCLS.checkEmail();
+		}
+	}
+});
+$("#email1, #email2, #email").bind({
+	change : function() {
+		valid_email = false;
+		JoinRegFormPCLS.changeEmail();
+	},
+	keypress : function(e) {
+		if (e.keyCode == 13) $(this).blur();
+	}
+});
+$("#email1, #email2, #email").keyup(function() {
+	$("#msg_email").empty().removeClass("show");
+	MemberCommonCLS.selectEmail();
+});
+
+$("#htel1, #htel2, #htel3, #htel, #certnum").keypress(function(e) {
+	_commonctrl.chkNumeric({event:e});
+});
+
+//약관 동의 체크
+$("#chk0, #chk1, #chk2, #chk3").click(function(e) {
+	JoinRegFormPCLS.allAgreeCheck();
+});
+
+$("#sectionSms").click(function(e) {
+	if ($("#sectionSms").is(":checked")) {
+		$("#sectioncd_E").prop("checked", true);
+		$("#sectioncd_E").parent().addClass("on");
+	} else {
+		$("#sectioncd_E").prop("checked", false);
+		$("#sectioncd_E").parent().removeClass("on");
+	}
+	JoinRegFormPCLS.allAgreeCheck();
+});
+
+$("#sectionEmail").click(function(e) {
+	if ($("#sectionEmail").is(":checked")) {
+		$("#sectioncd_A, #sectioncd_B, #sectioncd_I, #sectioncd_C").prop("checked", true);
+		$("#sectioncd_A, #sectioncd_B, #sectioncd_I, #sectioncd_C").parent().addClass("on");
+	} else {
+		$("#sectioncd_A, #sectioncd_B, #sectioncd_I, #sectioncd_C").prop("checked", false);
+		$("#sectioncd_A, #sectioncd_B, #sectioncd_I, #sectioncd_C").parent().removeClass("on");
+	}
+	JoinRegFormPCLS.allAgreeCheck();
+});
+
+//모두 동의 체크
+$("#allAgree").click(function(e) {
+	if ($("#allAgree").is(":checked")) {
+		$("#chk0, #chk1, #chk2, #chk3, #sectionSms, #sectionEmail, input[name='sectioncd']").prop("checked", true);
+		$("#chk0, #chk1, #chk2, #chk3, #sectionSms, #sectionEmail, input[name='sectioncd']").parent().addClass("on");
+	} else {
+		$("#chk0, #chk1, #chk2, #chk3, #sectionSms, #sectionEmail, input[name='sectioncd']").prop("checked", false);
+		$("#chk0, #chk1, #chk2, #chk3, #sectionSms, #sectionEmail, input[name='sectioncd']").parent().removeClass("on");
+	}
+});
+
+
+// 인증정보 셋팅
+
+$("#usernm").val("");
+$("#birthdate").val("");
+$("#birthyear").val("");
+$("#birthmonth").val("");
+$("#birthday").val("");
+$("input[name='gender']:radio[value='']").attr("checked", true);
+
+$("#nationtype").val("N");
+$("#enc_data").val("");
+$("#seckey").val("");
+
+JoinRegFormPCLS.viewCertInfo();
+
+$("input, select").focus(function(e) {
+	e.preventDefault();
+	$("input, select").parents("li").removeClass("focus");
+	$(this).parents("li").addClass("focus");
+});
+
+$("input[name='gender']").click(function(e) {
+	$("input, select").parents("li").removeClass("focus");
+	$("input[name='gender']").parents("li").addClass("focus");
+});
+
+$("input, select").focusout(function(e) {
+	e.preventDefault();
+	$(this).parents("li").removeClass("focus");
+});
+
+// 뒤로가기버튼 클릭시
+$(window).load(function() {
+	if(typeof history.pushState === "function") {
+		history.pushState("back", null, null);
+		window.onpopstate = function() {
+			if (confirm('회원가입을 다음에 진행하시겠습니까?')) {
+				//location.href= "http://www.alba.co.kr";
+				//MemberCommonCLS.goInOutLink({action:'HOME'});
+				var device = $("#device").val();
+				var siteui = $("#siteui").val();
+				var sitecd = $("#sitecd").val();
+				var referurl = document.referrer.toLowerCase();
+
+				if (referurl.indexOf("oauthcallback") > -1 || referurl.indexOf("loginsnsproc") > -1) {
+					var url = "/user/join/?site=" + (siteui == "ALBA" ? "MOBILE" : sitecd);
+					location.replace(url);
+				} else {
+					if (device == "") {	//웹일경우는 뒤로가기
+						history.back();
+					} else {	// 하이브리드앱
+						if (siteui == "ALBA" && sitecd == "MOBILE") {	// 알바천국앱일 경우 창닫기
+							MemberCommonCLS.goInOutLink({ action: 'CLOSE_WINDOW' });
+						} else {	// 나머지앱(채용매니저앱) 뒤로가기
+							history.back();
+						}
+					}
+				}
+			} else {
+				history.pushState("back", null, document.URL);
+			}
+		};
+	}
+});
+
+$(document).keydown(function(e) {
+	//새로고침 키 방지
+	if (e.keyCode == 116) {
+		if (confirm("입력된 정보가 사라집니다.\n새로고침 하시겠습니까?")) {
+			location.reload();
+		} else {
+			return false;
+		}
+	}
+});
+
+// PC - Placeholder 변경
+// if ($('html').hasClass('pc')) {
+// 	$('#userid').attr('placeholder', '4~15자의 영문, 숫자를 입력하세요.');
+// 	$('#passwd').attr('placeholder', '8~16자 영문, 숫자, 특수기호를 입력하세요.');
+// }
+</script>
+<!-- //section -->
+<hr>
+<!-- Footer -->
+
+<!--[if lte IE 8]>
+<div class="explorer-wrapper">
+	<div class="explorer__filter"></div>
+	<div class="explorer__info">
+		<div class="explorer__content">
+			<h2 class="explorer__title">Internet Explorer 이용안내</h2>
+			<p class="explorer__text explorer__text--first">Internet Explorer 하위 버전을 이용중인 경우<br />회원가입 시 일부 기능이 작동하지 않아 가입이 안되는 경우가 있으니<br />최신 버전의 브라우저를 이용해주시기 바랍니다.</p>
+			<p class="explorer__text">최신 버전 사용중인데 오류가 나는 경우에는<br />[도구]->[호환성 보기 설정]에서 호환성 보기에 추가한 웹사이트 목록에서<br />'alba.co.kr'를 제거 후 이용해주시기 바랍니다.</p>
+		</div>
+		<div class="explorer__button-box">
+			<a href="#" class="explorer__button explorer__button--close" onclick="explorerLayer('');return false;">닫기</a>
+			<a href="#" class="explorer__button explorer__button--today" onclick="explorerLayer('today');return false;">오늘 하루 보지 않기</a>
+		</div>
+	</div>
+</div>
+<script>
+function explorerLayer(type) {
+	$('.explorer-wrapper').hide();
+	if (type == 'today') {
+		CookieCLS.setCookie('explorer_info', '1', 1);
+	}
+}
+(function() {
+	if (CookieCLS.getCookie('explorer_info') == "1") {
+		$('.explorer-wrapper').hide();
+	}
+})();
+</script>
+<![endif]-->
+
+<input type="hidden" id="mobileyn" value="N"><!-- DO NOT DELETE //-->
+<iframe id="hideFrame" name="hideFrame" src="about:blank" class="hide" title="빈 프레임"></iframe><!-- DO NOT DELETE //-->
+<script>
+// placeholder 적용 (플러그인)
+if (!Modernizr.input.placeholder) {
+	$("input, textarea").placeholder();
+}
+</script>
+
+<!-- 알바 스크립트 -->
+
+<script src="//trk.alba.co.kr/TA.js?202302281600"></script><div id="_BA"><img src="https://trk.alba.co.kr/Collect?servicetype=PCWEB&amp;logtype=VIEW&amp;cookieenabled=Y&amp;enctype=UTF-8&amp;scheme=https&amp;host=sign.alba.co.kr&amp;port=443&amp;pageurl=%2Fuser%2Fjoin%2FJoinRegFormP.asp&amp;fullurl=https%3A%2F%2Fsign.alba.co.kr%2Fuser%2Fjoin%2FJoinRegFormP.asp&amp;getdata=&amp;referurl=https%3A%2F%2Fsign.alba.co.kr%2Fuser%2Fjoin%2F&amp;referparam=site%3DWWW&amp;category1=%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85&amp;osversion=&amp;cid=9D2DC57C79E743F5928ADF30EA421431" width="1" height="1" style="display:none" alt=""></div>
+<script>
+
+BA.Collect("VIEW", {
+
+	"servicetype":"PCWEB"
+
+});
+</script>
+
+<!-- //알바 스크립트 -->
+
+<!-- 통계 스크립트 -->
+
+	<!-- Global site tag (gtag.js) - Google Ads: 874558621 -->
+	<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-874558621"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'AW-874558621');
+	</script>
+
+<!-- (PC) Google Log Script Start -->
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-34867276-1', 'auto');
+	ga('require', 'displayfeatures');
+	ga('require', 'ecommerce', 'ecommerce.js');
+	ga('send', 'pageview');
+</script>
+<!-- (PC) Google Log Script End -->
+
+<!-- //통계 스크립트 -->
+<!-- //Footer -->
+
+
+		<!-- <button type="button" onclick="JoinRegFormPCLS.sendCertNum();return false;" id="btnCertSend" class="box-in-button">인증번호전송</button>
+						<button type="button" onclick="JoinRegFormPCLS.sendCertNum();return false;" id="btnCertResend" class="box-in-button" style="display:none;">재전송</button>
+						-->
+					</li>
+				<!--  	<li class="input-box">
+						<input type="hidden" id="certnumcheck" name="certnumcheck" value="">
+						<input type="hidden" id="certyn" name="certyn" value="N">
+						<input type="tel" id="certnum" name="certnum" class="has-label" maxlength="6">
+						<label for="certnum">인증번호</label>
+						<button type="button" onclick="JoinRegFormPCLS.doSubmitCertNum();" class="box-in-button">확인</button>  -->
+					</li>
+				</ul>
+			<!--	<div class="valid-text">
+					<span id="msg_htel" class="msg"></span>
+					<p class="memo" id="CertGbnMobileContent2" style="display: none;">휴대폰으로 인증번호가 발송되었습니다.</p>
+					<p class="memo" id="CertGbnCertContent" style="display: none;"><em>휴대폰 인증이 필요합니다.</em></p>
+					<p class="memo complete" id="CertGbnMobileContent3" style="display: none;">휴대폰 번호 확인이 완료되었습니다.</p>
+					<p class="memo" id="CertGbnFailureContent" style="display: none;"><em>입력하신 인증번호가 일치하지 않습니다. 인증번호 확인 후 정확히 입력해주세요.</em></p>
+					<p class="memo" id="CertGbnEmptyContent" style="display: none;"><em>인증번호를 입력해 주세요.</em></p>
+				</div> -->*/

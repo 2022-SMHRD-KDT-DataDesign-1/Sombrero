@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.som.controller.DeleteCart;
 import com.som.controller.DeleteService;
 import com.som.controller.GetProductDetail;
+import com.som.controller.InquiryService;
 import com.som.controller.InsertCart;
 import com.som.controller.LoginService;
 import com.som.controller.MessageService;
 import com.som.controller.SaleService;
+import com.som.controller.UserStatusService;
 import com.som.command.Command;
 
 
@@ -41,7 +43,11 @@ public class Frontcontroller extends HttpServlet {
 			// 매매 희망 서비스
 			service = new SaleService();
 		} else if (result.equals("DeleteService.do"))	{
+			// 관리자 회원삭제 서비스
 			service = new DeleteService();
+		} else if (result.equals("UserStatusService.do")) {
+			// 회원 구매진행상태 변경
+			service = new UserStatusService();
 		} else if (result.equals("GetProductDetail.do")) {
 			// 상품 정보 가져오기
 			service = new GetProductDetail();
@@ -51,6 +57,9 @@ public class Frontcontroller extends HttpServlet {
 		} else if (result.equals("DeleteCart.do")) {
 			// 장바구니 삭제
 			service = new DeleteCart();
+		} else if (result.equals("InquiryService.do")) {
+			// 문의 게시판
+			service = new InquiryService();
 		}
 		
 		
