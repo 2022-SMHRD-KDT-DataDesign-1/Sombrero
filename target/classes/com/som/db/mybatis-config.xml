@@ -14,6 +14,7 @@
 		<typeAlias type="com.som.model.UsersVO" alias="UsersVO"/>
 		<typeAlias type="com.som.model.CartVO" alias="CartVO"/>
 		<typeAlias type="com.som.model.OrderVO" alias="OrderVO"/>
+		<typeAlias type="com.som.model.mypageVO" alias="mypageVO"/>
 	</typeAliases>
 
 	<!-- 환경설정 ( 계정, url, driver ) -->
@@ -37,6 +38,7 @@
     <mapper resource="com/som/db/UsersMapper.xml"/>  
     <mapper resource="com/som/db/CartMapper.xml"/>    
     <mapper resource="com/som/db/OrderMapper.xml"/>    
+    <mapper resource="com/som/db/MypageMapper.xml"/>    
   </mappers>
 </configuration>
 
