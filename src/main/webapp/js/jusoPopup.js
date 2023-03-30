@@ -1,0 +1,2 @@
+
+	function closePopup() {window.close();}

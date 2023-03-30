@@ -12,11 +12,16 @@
   		delete from t_users where user_id=#{user_id}
   	</delete>
   	
-  	<insert id="userStatus">
-  		insert into t_users (t_status) value()
-  	</insert>
-  	
-  	<update id="updateStatus">
-  		update t_users set user_status=#{user_status} where user_id=#{user_id};
+  	<update id="updateStatus" parameterType="UsersVO">
+  		update t_users set user_status=#{user_status} where user_seq=#{user_seq}
   	</update>
+  	
+  	  <insert id="insertUser" parameterType="UsersVO" >
+  	insert into t_users values(user_seq.nextval,#{user_id},#{user_pw},#{user_name},#{user_nick},#{user_address},#{user_phone},sysdate,null)
+  </insert>
+  
+  	<select id="login" parameterType="UsersVO" resultType="UsersVO">
+  		select * from t_users where user_id=#{user_id} and user_pw=#{user_pw}
+  	</select>
+  	
 </mapper>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.som.db.MypageMapper">
+	<select id="showOrderList" resultType="mypageVO">
+	select o.order_date, (select product_name from t_products where product_seq = rt.product_seq) as product_name, rt.rental_quantity, rt.rental_period, rt.rental_payment, (o.order_date + rt.rental_period + 6) as return_date
+, (select photo_path from t_photos where product_seq = rt.product_seq) as photo_path
+from t_rentals rt, t_orders o where rt.order_seq = o.order_seq(+) and user_seq = 1
+	</select>
+</mapper>

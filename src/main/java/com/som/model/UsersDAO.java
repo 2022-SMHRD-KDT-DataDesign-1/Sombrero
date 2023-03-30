@@ -31,4 +31,18 @@ public class UsersDAO {
 		sqlSession.close();
 		return cnt;
 	}
+	
+	public int insertUser(UsersVO vo) {
+		SqlSession sqlSession =sqlSessionFactory.openSession(true);
+	int cnt = sqlSession.insert("insertUser",vo);
+			sqlSession.close();
+			return cnt;
+	}
+   public UsersVO login(UsersVO vo) {
+	   UsersVO loginUser= null;  
+	   SqlSession sqlSession = sqlSessionFactory.openSession(true);
+	   loginUser = sqlSession.selectOne("login",vo);
+	   sqlSession.close();
+	   return loginUser;
+   }  
 }
