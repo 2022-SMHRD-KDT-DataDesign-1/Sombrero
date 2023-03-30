@@ -17,7 +17,6 @@ public class SaleDAO {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		int cnt = sqlSession.insert("insertSale", vo);
 		sqlSession.close();
-
 		return cnt;
 	}
 
@@ -30,4 +29,13 @@ public class SaleDAO {
 		sqlSession.close();
 		return list;
 	}
+	
+	public int updateReturn(SaleVO vo) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int cnt = sqlSession.update("updateReturn", vo);
+		sqlSession.close();
+		return cnt;
+	}
+	
+	
 }

@@ -47,5 +47,16 @@ public class ProductDAO {
 		return list;
 	}
 	
+	// 상품 카테고리랑 같이 출력
+	public List<ProductVO> adminShowProduct() {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		List<ProductVO> productList = sqlSession.selectList("adminShowProduct");
+		sqlSession.close();
+		
+		return productList;
+	}
+	
+	
+	
 	
 }
