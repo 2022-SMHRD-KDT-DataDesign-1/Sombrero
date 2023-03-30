@@ -78,7 +78,7 @@
 							질문게시판
 						</a>
 
-						<a href="mypasge.jsp" class="flex-c-m trans-04 p-lr-25">
+						<a href="mypage.jsp" class="flex-c-m trans-04 p-lr-25">
 							내 정보
 						</a>
 

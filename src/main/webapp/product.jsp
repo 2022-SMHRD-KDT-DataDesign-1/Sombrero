@@ -114,7 +114,7 @@
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<% int product_seq = p.getProduct_seq();
-								String[] photo_path = p_dao.getPhotoPath(p.getPhoto_seq()).get(0).getPhoto_path().split(";");
+								String[] photo_path = p.getPhoto_path().split(";");
 							%>
 							<img src=<%=photo_path[0] %> alt="IMG-PRODUCT">
 							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">

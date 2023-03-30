@@ -19,9 +19,39 @@ public class SaleVO {
 	
 	private String user_id;
 
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
 	private int cate_depth1;
 	private int cate_depth2;
-	
+
+	public SaleVO(int sale_seq, int user_seq, int cate_seq, String sale_photo, String sale_name, int sale_price,
+			String sale_content, int sale_account, String sale_bank, String sale_acc_holder, String sale_check,
+			Timestamp sale_date, String sale_return, String user_id, int cate_depth1, int cate_depth2) {
+		super();
+		this.sale_seq = sale_seq;
+		this.user_seq = user_seq;
+		this.cate_seq = cate_seq;
+		this.sale_photo = sale_photo;
+		this.sale_name = sale_name;
+		this.sale_price = sale_price;
+		this.sale_content = sale_content;
+		this.sale_account = sale_account;
+		this.sale_bank = sale_bank;
+		this.sale_acc_holder = sale_acc_holder;
+		this.sale_check = sale_check;
+		this.sale_date = sale_date;
+		this.sale_return = sale_return;
+		this.user_id = user_id;
+		this.cate_depth1 = cate_depth1;
+		this.cate_depth2 = cate_depth2;
+	}
+
 	public SaleVO() {
 		super();
 	}
@@ -64,6 +94,10 @@ public class SaleVO {
 	}
 
 	
+
+	public SaleVO(String sale_return, int sale_seq) {
+		this.sale_seq = sale_seq;
+		this.sale_return = sale_return;	}
 
 	public int getSale_seq() {
 		return sale_seq;

@@ -1,3 +1,5 @@
+<%@page import="com.som.model.ProductDAO"%>
+<%@page import="com.som.model.ProductVO"%>
 <%@page import="com.som.model.SaleVO"%>
 <%@page import="com.som.model.SaleDAO"%>
 <%@page import="com.som.model.InquiryVO"%>
@@ -12,14 +14,13 @@
 <head>
 <meta charset="UTF-8">
 <title>admin</title>
-
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/admin.css">
+	<link rel="stylesheet" type="text/css" href="css/dataTable.css">
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-	<header>
-		<jsp:include page="./common/header.jsp" />
-	</header>
 
+<!-- 관리자 페이지 -->
 	<div align="center">
 		<%
 		UsersDAO dao = new UsersDAO();
@@ -27,8 +28,12 @@
 		/* System.out.print(list.size()); */
 		%>
 
+		<a href="index.jsp"><h1>To.이 페이지를 보는 사람에게...</h1></a>
+		<h4>이 페이지를 보면 어지러운 사람은 당장 이 페이지를 이쁘게 만들어주세요 당신의 작은 노력이 이 페이지를 이쁘게 만듭니다.</h4>
+		<br><br><br><br><br><br>
+		<!-- 전체 사용자 출력 -->
 		<h1>전체 사용자 출력</h1>
-		<table>
+		<table class="rwd-table">
 			<thead>
 				<tr>
 					<th>NO.</th>
@@ -58,12 +63,19 @@
 			</tbody>
 		</table>
 
+</div>
 
-		<% SaleDAO Saledao = new SaleDAO(); 
+
+		<!-- 상품 매입 관리 -->
+<div align="center">
+
+		<% SaleDAO Saledao = new SaleDAO() ;
 		List<SaleVO> SaleList = Saledao.selectAllSale();%>
+		
+		
 		<h1>상품 매입 관리</h1>
 		<form>
-			<table>
+			<table class="rwd-table">
 				<tr>
 					<th>No.</th>
 					<th>등록인</th>
@@ -71,38 +83,47 @@
 					<th>매입 희망가</th>
 					<th>등록일</th>
 					<th>반품희망여부</th>
+					<th>선택</th>
+					<th>비고</th>
 				</tr>
 				<%
 				for (int i = 0; i<SaleList.size(); i++) {
+					if(SaleList.get(i).getSale_return() == null){
 				%>
 				<tr>
 					<td><%=SaleList.get(i).getCate_seq()%></td>
-					<td><%=SaleList.get(i).getUser_seq()%></td>
+					<td><%=SaleList.get(i).getUser_id()%></td>
 					<td><a><%=SaleList.get(i).getSale_name()%></a></td>
 					<td><%=SaleList.get(i).getSale_price()%></td>
 					<td><%=SaleList.get(i).getSale_date()%></td>
 					<td><%=SaleList.get(i).getSale_check()%></td>
-					<td><select name="sale_Check" class="sale_check">
+					<td><select name="sale_return" class="sale_return">
+							<option>선택</option>
 							<option>매입</option>
 							<option>반품</option>
 							<option>폐기</option>
 					</select><input type="hidden" value="" class="saleStatus<%=i%>"> <input
-						type="hidden" class="s_user_seq<%=i%>"
-						value="<%=SaleList.get(i).getUser_seq()%>"></td>
+						type="hidden" class="sale_seq<%=i%>"
+						value="<%=SaleList.get(i).getSale_seq()%>"></td>
 					<td>
-						<button type="button" onclick="changecheck(<%=i%>)">상태변경</button> 
+						<button type="button" onclick="checksale(<%=i%>)">상태변경</button>
 					</td>
 				</tr>
 
-				<% }%>
+				<%} }%>
 
 			</table>
 		</form>
+</div>
+
+<!-- 상품 반납 관리 -->
 
 
+<!-- 사용자 상태 관리 -->
 
+<div align="center">
 		<h1>사용자 상태 관리</h1>
-		<table>
+		<table class="rwd-table">
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -138,17 +159,17 @@
 				%>
 			</tbody>
 		</table>
-
+</div>
 
 		<!-- 문의사항 관리 기능 -->
-
+	<div align="center">
 		<%
 		inquiryDAO Inquirydao = new inquiryDAO();
 		List<InquiryVO> Inquirylist = Inquirydao.showInquiry();
 		%>
 
 		<h1>문의 사항 관리</h1>
-		<table>
+		<table class="rwd-table">
 			<thead>
 				<tr>
 					<th>번호</th>
@@ -156,6 +177,7 @@
 					<th>내용</th>
 					<th>작성일자</th>
 					<th>답변 여부</th>
+					<th>비고</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -170,7 +192,9 @@
 					<td><%=m.getInquiry_date()%></td>
 					<td><%= ansConfirm %></td>
 					<td><button href='inquiryAnswer.jsp'>답변달기</button></td>
-					<!-- 답변페이지 만드시는분에게 이 영광을 돌립니다! -->
+					<!-- 답변페이지 만드시는분에게 이 영광을 돌립니다! 
+						그게 나였고 ㅎ.... 인생 하....
+					-->
 
 				</tr>
 				<%
@@ -179,49 +203,59 @@
 
 			</tbody>
 		</table>
-
-
+</div>
+	<div align="center">
 		<h1>상품 재고 관리</h1>
-		<table>
+		
+		<%ProductVO pvo = new ProductVO();
+		  ProductDAO pdao = new ProductDAO();
+		  List<ProductVO> productList = pdao.adminShowProduct(); 
+		%>
+		<table class="rwd-table" id="exampleTable">
 			<thead>
 				<tr>
+					<th>카테고리</th>
 					<th>상품명</th>
-					<th>재고량</th>
-					<th></th>
+					<th>보유수량</th>
+					<th>대여수량</th>
+					<th>총재고</th>
 				</tr>
 			</thead>
 			<tbody>
+	<%
+				for (ProductVO m : productList) {
+				%>
 				<tr>
-					<td>상품A</td>
-					<td>100</td>
-					<td>
-						<!-- <form>
-							<label for="productA-stock">재고량</label> <input type="number"
-								id="productA-stock" name="productA-stock">
-							<button type="submit">저장</button>
-						</form> -->
-					</td>
-				</tr>
-				<!-- 다른 상품 데이터도 추가 -->
+					<td><%=m.getCate_depth1()%></td>
+					<td><%=m.getProduct_name()%></td>
+					<td><%=m.getProduct_rest()%></td>
+					<td><%=m.getProduct_rent()%></td>
+					<td><%=m.getProduct_have() %></td>
+					</tr>
+					<%} %>
+
+
 			</tbody>
 		</table>
+		</div>
+ <!-- admin page 갱생 프로젝트 -->
 
-		<footer>
-			<jsp:include page="./common/footer.jsp" />
-		</footer>
 
-	</div>
+
+
+	
+
 
 	<script type="text/javascript">
 	
 		function checksale(i){
-			var sale_check = $('.saleStatus'+i).val();
-			var s_user_seq = $('.s_user_seq'+i).val();
-			console.log(i+"/"+sale_check+"/"+s_user_seq);
-			location.href=""+sale_chek+"&s_user_seq="+s_user_seq;
+			var sale_return = $('.saleStatus'+i).val();
+			var sale_seq = $('.sale_seq'+i).val();
+			console.log(i+"/"+sale_return+"/"+sale_seq);
+			location.href="SaleStatusService.do?sale_return="+sale_return+"&sale_seq="+sale_seq;
 		};
 		
-		$('.sale_check').checksale(function(){
+		$('.sale_return').change(function(){
 			this.nextSibling.value=this.value;
 			console.log(this.nextSibling.value);
 		});
@@ -232,11 +266,13 @@
 			console.log(i+"/"+status+"/"+seq);
 			location.href="UserStatusService.do?status="+status+"&seq="+seq;
 		};
+		
 		$('.setStatus').change(function(){
 			this.nextSibling.value=this.value;
 			console.log(this.nextSibling.value);
 		});
-	
+
+		
 		</script>
 
 </body>
