@@ -2,21 +2,25 @@
 
 #mypageDiv{
 	display: flex;
-  justify-content: space-around;
   height: 2000px;
+  position: relative;
+  left: 100px;
 }
 
 #menuDiv{
 	position: relative;
+	float: left;
+	width: 200px;
+	margin-left: 10px;
 	top: 100px;
-	left: 10px;
 }
 
-#userDiv{
+#statusDiv{
 	position: relative;
 	top: 50px;
 	display: flex;
 	margin: 0 auto;
+	left: 100px;
 }
 
 
@@ -25,6 +29,69 @@
 	top: 100px;
 	margin: 0 auto;
 }
+
+#userDiv{
+	position: relative;
+	margin: 10px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	height: 200px;
+	width: 1150px;
+}
+
+#rightDiv{
+	position:relative;
+	left: 100px;
+}
+
+#userDiv> div{
+	
+	margin:10px;
+}
+
+#hiUser{
+	float: left;
+	width: 400px;
+	height: 180px;
+	margin:10px;
+	margin-right: 0px;
+	padding: 34px;
+	background-color: rgb(61, 60, 60);
+}
+
+#coin_coupon{
+	float: right;
+	width: 700px;
+	margin:10px;
+	position:relative;
+	right: 20px;
+}
+
+#coin{
+	float: left;
+	width: 330px;
+	height: 180px;
+	margin:10px;
+	padding: 34px;
+	background-color: rgb(61, 60, 60);
+	position:relative;
+	right: 10px;
+	bottom: 10px;
+}
+
+#coupon{
+	float: right;
+	width: 330px;
+	height: 180px;
+	margin:10px;
+	padding: 34px;
+	background-color: rgb(61, 60, 60);
+	position:relative;
+	bottom: 10px;
+	right: 20px;
+	
+}
+
 
 .my_tit{
     -webkit-text-size-adjust: none;
@@ -77,25 +144,23 @@
 	font-size: 18px;
     font-weight: 700;
     text-align: center;
+    border-bottom: 1px solid #444444;
 }
 
 .orderTr>td{
 	padding: 10px;
+	border-bottom: rgb(168, 166, 166);
 }
-
-#userDiv>div {
-        width: 150px;
-        height: 150px;
-        background-color: rgb(244, 242, 245);
-        border-radius: 50%;
-    }
-
 
 #hidden{
 	display: none;
 }
 
 .circle {
+	width: 150px;
+    height: 150px;
+    background-color: rgb(244, 242, 245);
+    border-radius: 50%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -108,4 +173,27 @@
 
 .circle>p{
 	color: rgb(244, 242, 245);
+}
+
+#hiSpan{
+	font-size: 20px;
+	color: white;
+	font-family: 'campton', 'Apple SD Gothic Neo', NanumBarunGothic,
+          '나눔바른고딕', Malgun Gothic, '맑은 고딕', dotum, sans-serif;
+}
+
+.title{
+	font-size: 15px;
+
+	color: white;
+	font-family: 'campton', 'Apple SD Gothic Neo', NanumBarunGothic,
+          '나눔바른고딕', Malgun Gothic, '맑은 고딕', dotum, sans-serif;
+}
+
+.data{
+	font-size: 25px;
+	font-weight: bold;
+	color: white;
+	font-family: 'campton', 'Apple SD Gothic Neo', NanumBarunGothic,
+          '나눔바른고딕', Malgun Gothic, '맑은 고딕', dotum, sans-serif;
 }
