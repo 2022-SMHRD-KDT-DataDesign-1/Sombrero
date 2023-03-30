@@ -1,3 +1,8 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.som.model.ProductVO"%>
+<%@page import="com.som.model.ProductDAO"%>
+<%@page import="java.util.Random"%>
+<%@page import="com.som.model.UsersVO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.som.model.mypageVO"%>
@@ -19,25 +24,34 @@
 
 	<%
 	// 세션으로 바꿀 것
-	int user_seq = 1;
-	String user_status = "입금완료";
+	UsersVO login_vo = (UsersVO)session.getAttribute("login_vo");
+	int user_seq = login_vo.getUser_seq();
+	String user_status = login_vo.getUser_status();
 	%>
 
 	<div id="mypageDiv">
 
-
 		<div id="menuDiv">
+			<div id="head_mypage">
+				<h1>마이페이지</h1>
+			</div>
+			
+			<div style="height:150px;">
+			</div>
+			<div id="menuDiv2">
 			<ul>
-				<li>주문/배송 조회</li>
-				<li>친구 추천하고 혜택 받기</li>
-				<li>쿠폰</li>
-				<li>적립금</li>
-				<li>일생일대 이야기</li>
-				<li>고객센터</li>
-				<li>제휴/대량구매 문의</li>
-				<li>회원정보수정</li>
-				<li>로그아웃</li>
+				<li class="mypage_menu"><a id="select" href="#">주문/배송 조회</a></li>
+				<li class="mypage_menu"><a id="review_menu" href="#">상품 리뷰</a></li>
+				<li class="mypage_menu"><a id="friend" href="#">친구 추천하고 혜택 받기</a></li>
+				<li class="mypage_menu"><a id="coupon_menu" href="#">쿠폰</a></li>
+				<li class="mypage_menu"><a id="coin_menu" href="#">적립금</a></li>
+				<li class="mypage_menu"><a id="story" href="#">일생일대 이야기</a></li>
+				<li class="mypage_menu"><a id="inquery" href="#">고객센터</a></li>
+				<li class="mypage_menu"><a id="big" href="#">제휴/대량구매 문의</a></li>
+				<li class="mypage_menu"><a id="update" href="#">회원정보수정</a></li>
+				<li class="mypage_menu"><a id="logout_menu" href="#">로그아웃</a></li>
 			</ul>
+			</div>
 		</div>
 	<div id="rightDiv">
 		<ul>
@@ -45,7 +59,7 @@
 				<div id="userDiv">
 					<div id="hiUser">
 						<div id="writeUser">
-							<span id="hiSpan">안녕하세요, <strong><%=user_seq%></strong>님!<br>오늘도
+							<span id="hiSpan">안녕하세요, <strong><%=login_vo.getUser_name()%></strong>님<br>오늘도
 								현명한 하루 되세요!
 							</span>
 						</div>
@@ -132,6 +146,49 @@
 				</div>
 			</li>
 			<!-- 주문 내역 끝 -->
+		
+		<!-- 추천 영역 시작 -->
+		<%
+			ProductDAO p_dao = new ProductDAO();
+			List<ProductVO> productList = p_dao.showProduct();
+			Random rd = new Random();
+			int[] r_list = new int[4];
+			
+			for(int i = 0; i<4; i++){
+				r_list[i] = rd.nextInt(productList.size());
+				
+				for(int k = 0; k<i; k++){
+					if(r_list[i] == r_list[k]){
+						i--;
+					}
+				}
+			}
+		
+			
+		%>
+		<li id="recommendLi">
+		<div id="recommendDiv">
+			<h3 class="my_tit"><%=login_vo.getUser_name() %>님을 위한 추천 상품</h3>
+				<div id="recommendDiv2">
+					<div id="recommendItem">
+						<div id="r_item1" class="recommendItems"><img src=<%=productList.get(r_list[0]).getPhoto_path().split(";")[0] %>></div>
+						<div id="r_item2" class="recommendItems"><img src=<%=productList.get(r_list[1]).getPhoto_path().split(";")[0] %>></div>
+						<div id="r_item3" class="recommendItems"><img src=<%=productList.get(r_list[2]).getPhoto_path().split(";")[0] %>></div>
+						<div id="r_item4" class="recommendItems"><img src=<%=productList.get(r_list[3]).getPhoto_path().split(";")[0] %>></div>
+					</div>
+					<div style="height: 300px"></div>
+					<div id="recommendText">
+						<div class="r_textC"><span class="r_title"><%=productList.get(r_list[0]).getProduct_name() %></span><br><span class="r_price"><%=formatter.format(productList.get(r_list[0]).getProduct_price()) %>원</span></div>
+						<div class="r_textC"><span class="r_title"><%=productList.get(r_list[1]).getProduct_name() %></span><br><span class="r_price"><%=formatter.format(productList.get(r_list[1]).getProduct_price()) %>원</span></div>
+						<div class="r_textC"><span class="r_title"><%=productList.get(r_list[2]).getProduct_name() %></span><br><span class="r_price"><%=formatter.format(productList.get(r_list[2]).getProduct_price()) %>원</span></div>
+						<div class="r_textC"><span class="r_title"><%=productList.get(r_list[3]).getProduct_name() %></span><br><span class="r_price"><%=formatter.format(productList.get(r_list[3]).getProduct_price()) %>원</span></div>
+					</div>
+				</div>
+		</div>
+		</li>
+		<!-- 추천 영역 끝 -->
+		
+		<!-- 오른쪽 영역 끝  -->
 		</ul>
 		</div>
 

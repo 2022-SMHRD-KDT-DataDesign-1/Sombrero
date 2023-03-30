@@ -13,6 +13,7 @@
 	width: 200px;
 	margin-left: 10px;
 	top: 100px;
+	height: 1500px;
 }
 
 #statusDiv{
@@ -20,7 +21,7 @@
 	top: 50px;
 	display: flex;
 	margin: 0 auto;
-	left: 100px;
+	left: 170px;
 }
 
 
@@ -42,6 +43,16 @@
 #rightDiv{
 	position:relative;
 	left: 100px;
+}
+
+#recommendDiv{
+	margin-top:180px;
+}
+
+#recommendItem{
+	margin-top: 50px;
+	background-color: rgb(61, 60, 60);
+	
 }
 
 #userDiv> div{
@@ -91,7 +102,10 @@
 	right: 20px;
 	
 }
-
+menuDiv2{
+	position:sticky;
+	top: 0;
+}
 
 .my_tit{
     -webkit-text-size-adjust: none;
@@ -196,4 +210,55 @@
 	color: white;
 	font-family: 'campton', 'Apple SD Gothic Neo', NanumBarunGothic,
           '나눔바른고딕', Malgun Gothic, '맑은 고딕', dotum, sans-serif;
+}
+
+.mypage_menu{
+	padding: 10px;
+}
+
+.mypage_menu>a{
+	color: #999999;
+}
+
+.returnDate{
+	font-weight: bold;
+}
+
+.em_status{
+	font-size: 30px;
+	font-style: normal;
+	font-weight: bold;
+	position: relative;
+	left: 19.5px;
+}
+
+.recommendItems{
+	width: 280px;
+	height: 280px;
+	background-color: rgb(244, 242, 245);
+	float:left;
+	margin: 0 10px;
+}
+
+.recommendItems>img{
+	width: 280px;
+	height: 280px;
+	position: relative;
+	padding: 40px;
+}
+
+.r_textC{
+	width: 280px;
+	height: 140px;
+	float:left;
+	margin: 0 10px;
+}
+
+.r_title{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.r_price{
+	font-size: 17px;
 }
