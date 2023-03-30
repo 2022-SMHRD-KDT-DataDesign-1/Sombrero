@@ -100,11 +100,7 @@ body {
 }
   </style>
 
-</head>
-<body>
-	<header>
-		<jsp:include page="./common/header.jsp" />
-	</header>
+
 
 		<%
 			UsersVO login_vo = (UsersVO)session.getAttribute("login_vo");
@@ -118,18 +114,16 @@ body {
     <div id="login-error-msg-holder">
       <p id="login-error-msg">잘못된 아이디 <span id="error-msg-second-line">비밀번호 입니다.</span></p>
     </div>
-    
+
     <form id="login-form" action="LoginService.do">
       <input type="text" name="user_id" id="username-field" class="login-form-field" placeholder="아이디를 입력해주세요">
       <input type="password" name="user_pw" id="password-field" class="login-form-field" placeholder="비밀번호를 입력해주세요">
       <input type="submit" value="Login" id="login-form-submit">
     </form>
-  
+
   </main>
-  
-    		<footer>
-			<jsp:include page="./common/footer.jsp" />
-		</footer>
+
+
 
 </body>
 </html>
