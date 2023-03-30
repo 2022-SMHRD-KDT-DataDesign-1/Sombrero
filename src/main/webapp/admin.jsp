@@ -14,11 +14,9 @@
 <head>
 <meta charset="UTF-8">
 <title>admin</title>
-
-		<script src="js/dataTable.js">
-		</script>
 	<link rel="stylesheet" type="text/css" href="css/admin.css">
 	<link rel="stylesheet" type="text/css" href="css/dataTable.css">
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 
