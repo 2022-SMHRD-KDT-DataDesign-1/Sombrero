@@ -47,7 +47,7 @@ isELIgnored="false"%>
 							<li><h1>환영합니다!</h1></li><br>
 							<li>회원가입을 축하합니다.</li><br>
 							<!--  회원가입 한 회원 아이디를 출력-->
-							<li><h2>${user_name}ddd</h2>님의 아이디는<h2>${user_id}</h2> 입니다.</li>
+							<li><h2>${user_name}</h2>님의 아이디는<h2>${user_id}</h2> 입니다.</li>
 							<li><button id="btn" onclick='location.href="Login.jsp"'>로그인하기 </button>
 							</li>
 							

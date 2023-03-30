@@ -20,7 +20,7 @@
   	insert into t_users values(user_seq.nextval,#{user_id},#{user_pw},#{user_name},#{user_nick},#{user_address},#{user_phone},sysdate,null)
   </insert>
   
-  	<select id="selectOne" parameterType="UsersVO" resultType="UsersVO">
+  	<select id="login" parameterType="UsersVO" resultType="UsersVO">
   		select * from t_users where user_id=#{user_id} and user_pw=#{user_pw}
   	</select>
   	

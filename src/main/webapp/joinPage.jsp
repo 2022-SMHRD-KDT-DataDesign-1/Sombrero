@@ -23,7 +23,7 @@
 	
 		<h1><a href="#"><img src="./images/dlg.png" width=50px hieght=30px alt="dlg"></a></h1>
 		<ul>
-					<li class="home"><a href="Main.jsp">HOME</a></li>
+					<li class="home"><a href="index.jsp">HOME</a></li>
 					<li class="login"><a href="Login.jsp">로그인</a></li>
 		</ul>
 	</div>
@@ -119,7 +119,7 @@
 			</section>
 
 			<div class="btnAction">
-				<a href="JoinSuccess.jsp" class="btn btnType1 submit" onclick="">가입하기 <%System.out.print("가입완료"); %></a>
+				<input type= "submit" onClick="location.href='index.jsp'" class="btn btnType1 submit" >
 			</div>
 			
 		</article>
