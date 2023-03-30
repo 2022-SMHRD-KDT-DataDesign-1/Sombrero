@@ -131,7 +131,7 @@ function showPopup() { window.open("jusoPopup.jsp", "a", "width=500, height=500,
 close();}
 	
 </script>
-
+	<script src="js/join.js"></script>
 </body>
 
 </html>
