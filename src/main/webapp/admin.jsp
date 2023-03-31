@@ -15,7 +15,6 @@
 <meta charset="UTF-8">
 <title>admin</title>
 	<link rel="stylesheet" type="text/css" href="css/admin.css">
-	<link rel="stylesheet" type="text/css" href="css/dataTable.css">
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
@@ -93,7 +92,7 @@
 				<tr>
 					<td><%=SaleList.get(i).getCate_seq()%></td>
 					<td><%=SaleList.get(i).getUser_id()%></td>
-					<td><a><%=SaleList.get(i).getSale_name()%></a></td>
+					<td><a href="buyDetail.jsp?sale_seq=<%=SaleList.get(i).getSale_seq()%>"><%=SaleList.get(i).getSale_name()%></a></td>
 					<td><%=SaleList.get(i).getSale_price()%></td>
 					<td><%=SaleList.get(i).getSale_date()%></td>
 					<td><%=SaleList.get(i).getSale_check()%></td>
@@ -191,10 +190,12 @@
 					<td><%=m.getInquiry_content()%></td>
 					<td><%=m.getInquiry_date()%></td>
 					<td><%= ansConfirm %></td>
-					<td><button href='inquiryAnswer.jsp'>답변달기</button></td>
+					<td><button href='inquiryAnswer.jsp'>답변달기</button>
+					문의사항 인스타DM부탁드리실게요 🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏
+					</td>
 					<!-- 답변페이지 만드시는분에게 이 영광을 돌립니다! 
 						그게 나였고 ㅎ.... 인생 하....
-					-->
+					 -->
 
 				</tr>
 				<%
@@ -238,10 +239,6 @@
 			</tbody>
 		</table>
 		</div>
- <!-- admin page 갱생 프로젝트 -->
-
-
-
 
 	
 

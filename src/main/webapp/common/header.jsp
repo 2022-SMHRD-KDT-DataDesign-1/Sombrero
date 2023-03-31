@@ -1,3 +1,4 @@
+<%@page import="com.som.model.UsersVO"%>
 <%@page import="com.som.model.CartDAO"%>
 <%@page import="com.som.model.CartVO"%>
 <%@page import="java.util.List"%>
@@ -64,6 +65,16 @@
 					
 		} %>
 	
+			<%
+			UsersVO login_vo = (UsersVO)session.getAttribute("login_vo");
+			if(login_vo != null){
+				System.out.print("세션굳"+login_vo.getUser_id());				
+			}
+		%>
+	
+	
+	
+	
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
@@ -74,7 +85,10 @@
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<%if(login_vo != null){%>
+								
+								<span><%=login_vo.getUser_id()%> 님 반갑습니다!</span>		
+						<a href="inquiry.jsp" class="flex-c-m trans-04 p-lr-25">
 							질문게시판
 						</a>
 
@@ -82,6 +96,11 @@
 							내 정보
 						</a>
 
+						<a href="LogoutService.do" class="flex-c-m trans-04 p-lr-25">
+							로그아웃
+						</a>
+						
+						<% }else if(login_vo == null) {%>
 						<a href="joinPage.jsp" class="flex-c-m trans-04 p-lr-25">
 							회원가입
 						</a>
@@ -89,10 +108,14 @@
 						<a href="login.jsp" class="flex-c-m trans-04 p-lr-25">
 							로그인
 						</a>
-						
+						<%}else if(login_vo.getUser_id().equals("admin")){ %>
 						<a href="admin.jsp" class="flex-c-m trans-04 p-lr-25">
 							관리자페이지
-						</a>						
+						</a>
+						<%} else{%>
+							<span>로그인 후 이용해주세요</span>												
+							<%}%>
+						
 						
 					</div>
 				</div>

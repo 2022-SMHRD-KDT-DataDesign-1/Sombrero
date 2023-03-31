@@ -12,4 +12,8 @@
   		update t_sale set sale_return=#{sale_return} where sale_seq=#{sale_seq}
   	</update>
   	
+  		<select id="detailSale" resultType="SaleVO"> 
+		select * from t_sale where sale_seq=#{sale_seq}
+	</select>
+  	
 </mapper>
