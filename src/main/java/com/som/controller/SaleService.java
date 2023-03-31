@@ -11,6 +11,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.som.command.Command;
 import com.som.model.SaleDAO;
 import com.som.model.SaleVO;
+import com.som.model.UsersVO;
 
 public class SaleService implements Command {
 
@@ -28,7 +29,9 @@ public class SaleService implements Command {
 			// String user_seq = session.getUser_seq();
 			// 로그인 구현되면 session으로 수정
 			
-			int user_seq = 1;
+			UsersVO login_vo = (UsersVO)session.getAttribute("login_vo");
+			int user_seq = login_vo.getUser_seq();
+			
 			// int cate_seq = Integer.parseInt(multi.getParameter("cate_seq"));
 			int cate_depth1 = Integer.parseInt(multi.getParameter("cate_depth1"));
 			int cate_depth2 = Integer.parseInt(multi.getParameter("cate_depth2"));

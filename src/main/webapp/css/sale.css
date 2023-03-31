@@ -82,3 +82,8 @@
 #account>td,tr {
     border-bottom: 1px solid #444444;
 }
+
+#saleDiv{
+	margin-top: 100px;
+	margin-bottom: 100px;
+}

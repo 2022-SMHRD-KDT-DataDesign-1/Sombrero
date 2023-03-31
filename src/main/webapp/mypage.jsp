@@ -130,6 +130,8 @@
 						</tr>
 						<%
 						for (mypageVO m : orderList) {
+							System.out.println(m.getPhoto_path());
+							System.out.println(m.getProduct_name());
 						%>
 						<tr class="orderTr">
 							<td class="date"><%=simpleDateFormat.format(m.getOrder_date())%></td>

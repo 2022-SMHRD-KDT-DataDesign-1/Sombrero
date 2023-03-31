@@ -1,13 +1,18 @@
 package com.som.frontcontroller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
 import com.som.controller.AnswerService;
+=======
+import com.som.command.Command;
+>>>>>>> branch 'main' of https://github.com/2022-SMHRD-KDT-DataDesign-1/Sombrero.git
 import com.som.controller.DeleteCart;
 import com.som.controller.DeleteService;
 import com.som.controller.GetProductDetail;
@@ -20,7 +25,7 @@ import com.som.controller.MessageService;
 import com.som.controller.SaleService;
 import com.som.controller.SaleStatusService;
 import com.som.controller.UserStatusService;
-import com.som.command.Command;
+import com.som.controller.returnService;
 
 
 @WebServlet("*.do")
@@ -72,6 +77,9 @@ public class Frontcontroller extends HttpServlet {
 			service = new LogoutService();
 		} else if (result.equals("AnswerService.do")) {
 			service = new AnswerService();
+		}else if(result.equals("returnService.do")) {
+			// 반납 게시판
+			service = new returnService();
 		}
 		
 		

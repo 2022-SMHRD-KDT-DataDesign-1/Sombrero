@@ -13,7 +13,7 @@
 	<header>
 		<jsp:include page="./common/header.jsp" />
 	</header>
-	
+	<div id="salePage">
 	<div id="saleDiv">
 
 		<div id="saleForm">
@@ -166,6 +166,7 @@
 				</table>
 			</form>
 		</div>
+	</div>
 	</div>
 	
 	<header>

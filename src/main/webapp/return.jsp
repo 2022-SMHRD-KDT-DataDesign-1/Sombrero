@@ -49,7 +49,7 @@
 						<td id="r_h_rentalseq<%=i %>"class="r_h_rentalseq"><%=r.getRental_seq() %></td>
 						
 						
-						<td id="r_botton<%=i %>" class="r_button" style="border-bottom: none"><button onclick="win_open('returnPopup.jsp?btn=<%=i++ %>', 'returnPopup')" type="button">반납 완료</button></td>
+						<td id="r_botton<%=i %>" class="r_button" style="border-bottom: none"><button onclick="win_open('returnPopup.jsp?btn=<%=i++ %>', 'returnPopup')" type="button">반납 처리하기</button></td>
 					</tr>
 				<%} %>
 			</table>

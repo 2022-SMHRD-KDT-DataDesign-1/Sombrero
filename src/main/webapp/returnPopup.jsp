@@ -9,7 +9,7 @@
 <body>
 	<div id="returnPopup">
 		<div id="formDiv">
-		<form id="returnForm" method="post" action="">
+		<form id="returnForm" method="post" action="returnService.do">
 			<table>
 				<tr>
 					<th>사용자 순번</th>
@@ -21,7 +21,7 @@
 				</tr>
 				<tr>
 					<th>반납 수량</th>
-					<td><input type="text" name="return_quantity"></td>
+					<td><input type="text" name="return_quantity" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"></td>
 				</tr>
 				<tr>
 					<th>반납일</th>
@@ -33,7 +33,7 @@
 				</tr>
 				<tr>
 					<td><input type="submit" value="반납 처리 완료"></td>
-					<td><button>닫기</button></td>
+					<td><button onclick="pclose();">닫기</button></td>
 				</tr>
 			
 			</table>
