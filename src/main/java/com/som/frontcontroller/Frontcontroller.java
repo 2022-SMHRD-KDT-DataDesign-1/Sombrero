@@ -1,12 +1,14 @@
 package com.som.frontcontroller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.som.command.Command;
 import com.som.controller.DeleteCart;
 import com.som.controller.DeleteService;
 import com.som.controller.GetProductDetail;
@@ -19,7 +21,7 @@ import com.som.controller.MessageService;
 import com.som.controller.SaleService;
 import com.som.controller.SaleStatusService;
 import com.som.controller.UserStatusService;
-import com.som.command.Command;
+import com.som.controller.returnService;
 
 
 @WebServlet("*.do")
@@ -69,6 +71,9 @@ public class Frontcontroller extends HttpServlet {
 			service = new SaleStatusService();
 		} else if (result.equals("LogoutService.do")) {
 			service = new LogoutService();
+		}else if(result.equals("returnService.do")) {
+			// 반납 게시판
+			service = new returnService();
 		}
 		
 		

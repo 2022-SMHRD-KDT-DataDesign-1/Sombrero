@@ -17,4 +17,13 @@ public class returnDAO {
 		
 		return returnList;
 	}
+
+	public int insertReturn(returnVO vo) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int cnt = sqlSession.insert("insertReturn", vo);
+		sqlSession.close();
+		
+		return cnt;
+	}
+
 }

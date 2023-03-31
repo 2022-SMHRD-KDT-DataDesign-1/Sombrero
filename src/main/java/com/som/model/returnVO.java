@@ -7,8 +7,8 @@ public class returnVO {
 	private int user_seq;
 	private int rental_seq;
 	private int return_quantity;
-	private Timestamp return_date;
-	private String return_ohters;
+	private String return_date;
+	private String return_others;
 	private Timestamp w_date;
 	
 	private String user_name;
@@ -19,7 +19,16 @@ public class returnVO {
 	private Timestamp return_ex_date;
 	private double return_num;
 	
-
+	
+	// 반납 확정을 위한 생성자
+	public returnVO(int user_seq, int rental_seq, int return_quantity, String return_date, String return_others) {
+		super();
+		this.user_seq = user_seq;
+		this.rental_seq = rental_seq;
+		this.return_quantity = return_quantity;
+		this.return_date = return_date;
+		this.return_others = return_others;
+	}
 
 	public returnVO() {
 		super();
@@ -41,12 +50,12 @@ public class returnVO {
 		return return_quantity;
 	}
 
-	public Timestamp getReturn_date() {
+	public String getReturn_date() {
 		return return_date;
 	}
 
-	public String getReturn_ohters() {
-		return return_ohters;
+	public String getReturn_others() {
+		return return_others;
 	}
 
 	public Timestamp getW_date() {

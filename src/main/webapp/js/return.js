@@ -5,3 +5,4 @@ function win_open(page, name){
 	// window.open("팝업될 문서 경로", "팝업될 문서 이름", 옵션)
 	window.open(page, name, "width=500, height=500 left=1000 top=300");
 };
+
