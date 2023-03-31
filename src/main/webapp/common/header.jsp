@@ -85,9 +85,21 @@
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
-						<%if(login_vo != null){%>
-								
-								<span><%=login_vo.getUser_id()%> 님 반갑습니다!</span>		
+						<%if(login_vo == null){%>
+						<a href="joinPage.jsp" class="flex-c-m trans-04 p-lr-25">
+							회원가입
+						</a>
+
+						<a href="login.jsp" class="flex-c-m trans-04 p-lr-25">
+							로그인
+						</a>								
+						<span><%=login_vo.getUser_id()%> 님 반갑습니다!</span>		
+						<% }else{%>
+						<%if(login_vo.getUser_id().equals("admin")){ %>
+						<a href="admin.jsp" class="flex-c-m trans-04 p-lr-25">
+							관리자페이지
+						</a>
+						<%}%>
 						<a href="inquiry.jsp" class="flex-c-m trans-04 p-lr-25">
 							질문게시판
 						</a>
@@ -98,23 +110,8 @@
 
 						<a href="LogoutService.do" class="flex-c-m trans-04 p-lr-25">
 							로그아웃
-						</a>
-						
-						<% }else if(login_vo == null) {%>
-						<a href="joinPage.jsp" class="flex-c-m trans-04 p-lr-25">
-							회원가입
-						</a>
-
-						<a href="login.jsp" class="flex-c-m trans-04 p-lr-25">
-							로그인
-						</a>
-						<%}else if(login_vo.getUser_id().equals("admin")){ %>
-						<a href="admin.jsp" class="flex-c-m trans-04 p-lr-25">
-							관리자페이지
-						</a>
-						<%} else{%>
-							<span>로그인 후 이용해주세요</span>												
-							<%}%>
+						</a>						
+						<%}%>
 						
 						
 					</div>
