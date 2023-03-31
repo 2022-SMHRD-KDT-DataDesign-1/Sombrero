@@ -93,15 +93,15 @@
 						<a href="login.jsp" class="flex-c-m trans-04 p-lr-25">
 							로그인
 						</a>								
-						<span><%=login_vo.getUser_id()%> 님 반갑습니다!</span>		
 						<% }else{%>
+						<span><%=login_vo.getUser_id()%> 님 반갑습니다!</span>		
 						<%if(login_vo.getUser_id().equals("admin")){ %>
 						<a href="admin.jsp" class="flex-c-m trans-04 p-lr-25">
 							관리자페이지
 						</a>
 						<%}%>
-						<a href="inquiry.jsp" class="flex-c-m trans-04 p-lr-25">
-							질문게시판
+						<a href="contact.jsp" class="flex-c-m trans-04 p-lr-25">
+							문의게시판
 						</a>
 
 						<a href="mypage.jsp" class="flex-c-m trans-04 p-lr-25">

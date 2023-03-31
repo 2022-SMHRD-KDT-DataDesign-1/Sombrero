@@ -6,4 +6,9 @@
   	<select id="showInquiry" parameterType="InquiryVO" resultType="InquiryVO">
   		select * from t_inquiry,t_users where t_inquiry.user_seq = t_users.user_seq order by inquiry_date desc
   	</select>
+  	
+  	<insert id="uploadInquiry" parameterType="InquiryVO">
+  		insert into t_inquiry values (t_inquiry_seq.nextval,#{user_seq},#{inquiry_title},#{inquiry_content},sysdate)
+  		  	</insert>
+  	
 </mapper>

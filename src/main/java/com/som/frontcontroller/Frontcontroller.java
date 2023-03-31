@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.som.controller.AnswerService;
 import com.som.controller.DeleteCart;
 import com.som.controller.DeleteService;
 import com.som.controller.GetProductDetail;
@@ -69,6 +70,8 @@ public class Frontcontroller extends HttpServlet {
 			service = new SaleStatusService();
 		} else if (result.equals("LogoutService.do")) {
 			service = new LogoutService();
+		} else if (result.equals("AnswerService.do")) {
+			service = new AnswerService();
 		}
 		
 		
