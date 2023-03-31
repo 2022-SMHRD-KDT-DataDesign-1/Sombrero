@@ -92,7 +92,7 @@
 				<tr>
 					<td><%=SaleList.get(i).getCate_seq()%></td>
 					<td><%=SaleList.get(i).getUser_id()%></td>
-					<td><a><%=SaleList.get(i).getSale_name()%></a></td>
+					<td><a href="buyDetail.jsp?sale_seq=<%=SaleList.get(i).getSale_seq()%>"><%=SaleList.get(i).getSale_name()%></a></td>
 					<td><%=SaleList.get(i).getSale_price()%></td>
 					<td><%=SaleList.get(i).getSale_date()%></td>
 					<td><%=SaleList.get(i).getSale_check()%></td>

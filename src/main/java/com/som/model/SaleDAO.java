@@ -1,6 +1,5 @@
 package com.som.model;
 
-
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -29,13 +28,21 @@ public class SaleDAO {
 		sqlSession.close();
 		return list;
 	}
-	
+
 	public int updateReturn(SaleVO vo) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		int cnt = sqlSession.update("updateReturn", vo);
 		sqlSession.close();
 		return cnt;
 	}
-	
-	
+
+	// 판매상품 상세정보
+	public SaleVO detailSale(int num) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		SaleVO vo = sqlSession.selectOne("detailSale", num);
+		sqlSession.close();
+
+		return vo;
+
+	}
 }
