@@ -17,4 +17,12 @@ public class mypageDAO {
 		
 		return orderList;
 	}
+	
+	public String showUserStatus(int user_seq) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		String user_status = sqlSession.selectOne("showUserStatus", user_seq);
+		sqlSession.close();
+		
+		return user_status;
+	}
 }

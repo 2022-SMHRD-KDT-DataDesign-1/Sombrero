@@ -8,4 +8,8 @@
 , (select photo_path from t_photos where product_seq = rt.product_seq) as photo_path
 from t_rentals rt, t_orders o where rt.order_seq = o.order_seq(+) and user_seq = 1
 	</select>
+	
+	<select id="showUserStatus" parameterType="int" resultType="String">
+		select user_status from t_users where user_seq = #{user_seq}
+	</select>
 </mapper>

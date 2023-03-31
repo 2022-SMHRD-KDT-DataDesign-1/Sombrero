@@ -1,3 +1,4 @@
+<%@page import="com.som.model.UsersDAO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.som.model.ProductVO"%>
 <%@page import="com.som.model.ProductDAO"%>
@@ -23,10 +24,15 @@
 	</header>
 
 	<%
-	// 세션으로 바꿀 것
+	// 세션 값 가져오기
 	UsersVO login_vo = (UsersVO)session.getAttribute("login_vo");
 	int user_seq = login_vo.getUser_seq();
-	String user_status = login_vo.getUser_status();
+	
+	// 상태 가져오기
+	mypageDAO m_dao = new mypageDAO();
+	String user_status = m_dao.showUserStatus(user_seq);
+	// String user_status = login_vo.getUser_status();
+	System.out.println(user_status);
 	%>
 
 	<div id="mypageDiv">
