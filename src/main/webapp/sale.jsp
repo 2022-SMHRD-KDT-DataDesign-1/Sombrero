@@ -1,3 +1,4 @@
+<%@page import="com.som.model.UsersVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,6 +10,13 @@
 
 </head>
 <body>
+
+	<%
+		UsersVO login_vo = (UsersVO)session.getAttribute("login_vo");
+		if(login_vo == null){
+			response.sendRedirect("login.jsp");
+		}
+	%>
 
 	<header>
 		<jsp:include page="./common/header.jsp" />
