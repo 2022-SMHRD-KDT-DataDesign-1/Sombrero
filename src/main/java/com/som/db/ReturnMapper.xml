@@ -6,6 +6,7 @@
 	<select id="showAllReturn" resultType="returnVO">
 	select
 	o.user_seq
+	, rt.rental_seq
 ,(select user_name from t_users where user_seq = o.user_seq) as user_name 
 ,o.order_quantity
 , (select product_name from t_products where product_seq = rt.product_seq) as product_name

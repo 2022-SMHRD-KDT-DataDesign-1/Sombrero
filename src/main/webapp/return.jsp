@@ -30,19 +30,26 @@
 
 		returnDAO r_dao = new returnDAO();
 		List<returnVO> returnList = r_dao.showAllReturn();
+		int i = 1;
 	%>
 		<div id="returnTableDiv">
 			<table id="returnTable">
-				<tr id="titleTr"><th class="r_user">대여자</th><th class="r_product">대여 물건</th><th class="r_quantity">대여 수량</th><th class="r_start">대여 시작일</th><th class="r_period">대여 기간</th><th class="r_ex_date">반납기한</th><th class="r_num">남은 날짜</th></tr>
+				<tr id="titleTr"><th class="r_user">대여자</th><th class="r_product">대여 물건</th><th class="r_quantity">대여 수량</th><th class="r_start">대여 시작일</th><th class="r_period">대여 기간</th><th class="r_ex_date">반납기한</th><th class="r_num"></th></tr>
 				<%for(returnVO r: returnList){ %>
 					<tr class = "dataTr">
-						<td class="r_user"><%=r.getUser_name() %></td>
-						<td class="r_product"><%=r.getProduct_name() %></td>
+						<td class="r_user"><%=r.getUser_name() %>(<%=r.getUser_seq() %>)</td>
+						<td class="r_product" align="left"><%=r.getProduct_name() %></td>
 						<td class="r_quantity"><%=r.getOrder_quantity() %>개</td>
 						<td class="r_start"><%=simpleDateFormat.format(r.getRental_date()) %></td>
 						<td class="r_period"><%=r.getRental_period() %>일</td>
-						<td class="r_ex_date"><%=r.getReturn_ex_date() %></td>
+						<td class="r_ex_date"><%=simpleDateFormat.format(r.getReturn_ex_date()) %></td>
 						<td class="r_num">D-<%=(int)r.getReturn_num() %></td>
+						
+						<td id="r_h_userseq<%=i %>" class="r_h_userseq"><%=r.getUser_seq() %></td>
+						<td id="r_h_rentalseq<%=i %>"class="r_h_rentalseq"><%=r.getRental_seq() %></td>
+						
+						
+						<td id="r_botton<%=i %>" class="r_button" style="border-bottom: none"><button onclick="win_open('returnPopup.jsp?btn=<%=i++ %>', 'returnPopup')" type="button">반납 완료</button></td>
 					</tr>
 				<%} %>
 			</table>
@@ -62,6 +69,8 @@
 <header>
 	<jsp:include page="./common/footer.jsp" />
 </header>
+
+<script src="./js/return.js" type="text/javascript"></script>
 
 </body>
 </html>
