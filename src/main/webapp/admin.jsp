@@ -190,10 +190,12 @@
 					<td><%=m.getInquiry_content()%></td>
 					<td><%=m.getInquiry_date()%></td>
 					<td><%= ansConfirm %></td>
-					<td><button href='inquiryAnswer.jsp'>답변달기</button></td>
+					<td><button href='inquiryAnswer.jsp'>답변달기</button>
+					문의사항 인스타DM부탁드리실게요 🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏
+					</td>
 					<!-- 답변페이지 만드시는분에게 이 영광을 돌립니다! 
 						그게 나였고 ㅎ.... 인생 하....
-					-->
+					 -->
 
 				</tr>
 				<%
@@ -237,10 +239,6 @@
 			</tbody>
 		</table>
 		</div>
- <!-- admin page 갱생 프로젝트 -->
-
-
-
 
 	
 

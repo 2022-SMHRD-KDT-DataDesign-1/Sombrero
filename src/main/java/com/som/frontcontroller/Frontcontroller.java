@@ -14,6 +14,7 @@ import com.som.controller.InquiryService;
 import com.som.controller.InsertCart;
 import com.som.controller.JoinService;
 import com.som.controller.LoginService;
+import com.som.controller.LogoutService;
 import com.som.controller.MessageService;
 import com.som.controller.SaleService;
 import com.som.controller.SaleStatusService;
@@ -66,6 +67,8 @@ public class Frontcontroller extends HttpServlet {
 			service = new JoinService();
 		} else if (result.equals("SaleStatusService.do")) {
 			service = new SaleStatusService();
+		} else if (result.equals("LogoutService.do")) {
+			service = new LogoutService();
 		}
 		
 		
