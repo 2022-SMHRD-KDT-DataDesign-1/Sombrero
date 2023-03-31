@@ -52,5 +52,13 @@ public class InquiryVO {
 		this.user_nick = user_nick;
 	}
 	
+	// 문의 게시글 작성
+	public InquiryVO(int user_seq, String inquiry_title, String inquiry_content) {
+		super();
+		this.user_seq=user_seq;
+		this.inquiry_title = inquiry_title;
+		this.inquiry_content = inquiry_content;
+	}
+	
 	
 }

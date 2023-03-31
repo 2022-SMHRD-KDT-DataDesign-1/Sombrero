@@ -34,6 +34,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 
+
 </head>
 <body>
 
@@ -73,28 +74,33 @@
 				</div>
 								<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
 					<form>
-						<h4 class="mtext-105 cl2 txt-center p-b-30">
+						<h4 class="mtext-105 cl2 txt-center p-b-30" style="font-size:30pt">
 							매입여부
 						</h4>
 
 						<div class="bor8 m-b-30">
-							<span class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25">품명 : <%=vo.getSale_name() %></span>
+							<span class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" style="font-size:18pt">품명 : <%=vo.getSale_name() %></span>
 							
 						</div>
 
 						<div class="bor8 m-b-30">
-							<span class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25">내용 : <%=vo.getSale_content() %></span>
+							<span class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" style="font-size:18pt">내용 : <%=vo.getSale_content() %></span>
 						</div>
 						<div class="bor8 m-b-30">
-							<span class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25">희망가격 : <%=vo.getSale_price() %></span>
+							<span class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" style="font-size:18pt">희망가격 : <%=vo.getSale_price() %></span>
+						</div>
+						<div class="bor8 m-b-30">
+							<span class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" style="font-size:18pt">반품희망여부 : <%=vo.getSale_check() %></span>
 						</div>
 
 						<!-- 매입 서비스 연결 -->
-						<a href="" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">매입</a>
+						<a href="SaleStatusService.do?sale_seq=<%=vo.getSale_seq()%>&sale_return=매입" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" style="font-size:18pt">매입</a>
 						
 						<br>
 						<!-- 반려 서비스 연결 -->
-						<a href="" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">반려</a>
+						<a href="SaleStatusService.do?sale_seq=<%=vo.getSale_seq()%>&sale_return=반품" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" style="font-size:18pt">반품</a>
+						<br>
+						<a href="SaleStatusService.do?sale_seq=<%=vo.getSale_seq()%>&sale_return=폐기" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" style="font-size:18pt">폐기</a>
 						
 					</form>
 				</div>

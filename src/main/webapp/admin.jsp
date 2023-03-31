@@ -27,8 +27,7 @@
 		/* System.out.print(list.size()); */
 		%>
 
-		<a href="index.jsp"><h1>To.이 페이지를 보는 사람에게...</h1></a>
-		<h4>이 페이지를 보면 어지러운 사람은 당장 이 페이지를 이쁘게 만들어주세요 당신의 작은 노력이 이 페이지를 이쁘게 만듭니다.</h4>
+		<a href="index.jsp"><h1>Hello! admin!</h1></a>
 		<br><br><br><br><br><br>
 		<!-- 전체 사용자 출력 -->
 		<h1>전체 사용자 출력</h1>
@@ -82,8 +81,6 @@
 					<th>매입 희망가</th>
 					<th>등록일</th>
 					<th>반품희망여부</th>
-					<th>선택</th>
-					<th>비고</th>
 				</tr>
 				<%
 				for (int i = 0; i<SaleList.size(); i++) {
@@ -96,7 +93,7 @@
 					<td><%=SaleList.get(i).getSale_price()%></td>
 					<td><%=SaleList.get(i).getSale_date()%></td>
 					<td><%=SaleList.get(i).getSale_check()%></td>
-					<td><select name="sale_return" class="sale_return">
+<%-- 					<td><select name="sale_return" class="sale_return">
 							<option>선택</option>
 							<option>매입</option>
 							<option>반품</option>
@@ -106,7 +103,7 @@
 						value="<%=SaleList.get(i).getSale_seq()%>"></td>
 					<td>
 						<button type="button" onclick="checksale(<%=i%>)">상태변경</button>
-					</td>
+					</td> --%>
 				</tr>
 
 				<%} }%>
@@ -168,6 +165,7 @@
 		%>
 
 		<h1>문의 사항 관리</h1>
+				<form action="AnswerService.do" method="get">
 		<table class="rwd-table">
 			<thead>
 				<tr>
@@ -175,8 +173,8 @@
 					<th>작성자</th>
 					<th>내용</th>
 					<th>작성일자</th>
-					<th>답변 여부</th>
-					<th>비고</th>
+					<th>답변 제목</th>
+					<th>답변 내용</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -189,21 +187,20 @@
 					<td><%=m.getUser_nick()%></td>
 					<td><%=m.getInquiry_content()%></td>
 					<td><%=m.getInquiry_date()%></td>
-					<td><%= ansConfirm %></td>
-					<td><button href='inquiryAnswer.jsp'>답변달기</button>
-					문의사항 인스타DM부탁드리실게요 🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏
-					</td>
-					<!-- 답변페이지 만드시는분에게 이 영광을 돌립니다! 
-						그게 나였고 ㅎ.... 인생 하....
-					 -->
-
+					<td><input type="text" name="answer_title" placeholder="제목을 입력해주세요"></td>
+					<td><textarea name="answer_content" placeholder="내용을 입력해주세요"></textarea></td>
+					<input type="hidden" name="inquiry_seq" value="<%=m.getInquiry_seq()%>">
+					<td><input type="submit" value="작성"></td>
+					
 				</tr>
+
 				<%
 				}
 				%>
 
 			</tbody>
 		</table>
+					</form>
 </div>
 	<div align="center">
 		<h1>상품 재고 관리</h1>

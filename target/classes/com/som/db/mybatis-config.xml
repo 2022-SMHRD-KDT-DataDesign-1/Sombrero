@@ -17,6 +17,7 @@
 		<typeAlias type="com.som.model.mypageVO" alias="mypageVO"/>
 		<typeAlias type="com.som.model.InquiryVO" alias="InquiryVO"/>
 		<typeAlias type="com.som.model.returnVO" alias="returnVO"/>
+		<typeAlias type="com.som.model.AnswerVO" alias="AnswerVO"/>
 	</typeAliases>
 
 	<!-- 환경설정 ( 계정, url, driver ) -->
@@ -44,6 +45,7 @@
     <mapper resource="com/som/db/OrderMapper.xml"/>
     <mapper resource="com/som/db/InquiryMapper.xml"/>
     <mapper resource="com/som/db/ReturnMapper.xml"/>
+    <mapper resource="com/som/db/AnswerMapper.xml"/>
   </mappers>
 </configuration>
 
