@@ -32,7 +32,6 @@
 	mypageDAO m_dao = new mypageDAO();
 	String user_status = m_dao.showUserStatus(user_seq);
 	// String user_status = login_vo.getUser_status();
-	System.out.println(user_status);
 	%>
 
 	<div id="mypageDiv">
@@ -130,8 +129,6 @@
 						</tr>
 						<%
 						for (mypageVO m : orderList) {
-							System.out.println(m.getPhoto_path());
-							System.out.println(m.getProduct_name());
 						%>
 						<tr class="orderTr">
 							<td class="date"><%=simpleDateFormat.format(m.getOrder_date())%></td>

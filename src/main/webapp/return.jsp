@@ -14,7 +14,7 @@
 <title>return</title>
 <link rel="stylesheet" type="text/css" href="css/return.css">
 </head>
-<body>
+<body style="overflow-x:hidden; overflow-y:auto;">
 
  <header>
 	<jsp:include page="./common/header.jsp" />
@@ -23,7 +23,9 @@
 
 <div id="returnPage">
 	<div id="returnPeople">
-	<h3 id="r_head">대여자 관리하기</h3>
+	<ul>
+	
+	<li><div id="r_headDiv"><h3 id="r_head">대여자 관리하기</h3></div></li>
 	<%
 		// 반납 예정인 사람들 목록 불러오기
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); // 날짜 포매팅
@@ -32,7 +34,7 @@
 		List<returnVO> returnList = r_dao.showAllReturn();
 		int i = 1;
 	%>
-		<div id="returnTableDiv">
+		<li><div id="returnTableDiv">
 			<table id="returnTable">
 				<tr id="titleTr"><th class="r_user">대여자</th><th class="r_product">대여 물건</th><th class="r_quantity">대여 수량</th><th class="r_start">대여 시작일</th><th class="r_period">대여 기간</th><th class="r_ex_date">반납기한</th><th class="r_num"></th></tr>
 				<%for(returnVO r: returnList){ %>
@@ -49,11 +51,13 @@
 						<td id="r_h_rentalseq<%=i %>"class="r_h_rentalseq"><%=r.getRental_seq() %></td>
 						
 						
-						<td id="r_botton<%=i %>" class="r_button" style="border-bottom: none"><button onclick="win_open('returnPopup.jsp?btn=<%=i++ %>', 'returnPopup')" type="button">반납 처리하기</button></td>
+						<td id="r_botton<%=i %>" style="border-bottom: none; background-color: white;"><button class="r_button" onclick="win_open('returnPopup.jsp?btn=<%=i++ %>', 'returnPopup')" type="button">반납 처리하기</button></td>
 					</tr>
 				<%} %>
 			</table>
 		</div>
+		</li>
+		</ul>
 	
 	
 	
