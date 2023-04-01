@@ -30,7 +30,7 @@ public class AnswerService implements Command {
 			System.out.println("답변 ㄴㄴ");
 		}
 		
-		return "contact.jsp";
+		return "admin.jsp";
 	}
 
 }
