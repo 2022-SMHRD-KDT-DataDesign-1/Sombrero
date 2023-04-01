@@ -179,9 +179,8 @@
 			</thead>
 			<tbody>
 				<%
-				String ansConfirm = "";
 				for (InquiryVO m : Inquirylist) {
-				%>
+					%>
 				<tr>
 					<td><%=m.getInquiry_seq()%></td>
 					<td><%=m.getUser_nick()%></td>

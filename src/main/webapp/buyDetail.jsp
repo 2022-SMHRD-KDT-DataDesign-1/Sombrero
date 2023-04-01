@@ -70,7 +70,7 @@
 
 				<div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
 					<!-- div안에 제품 사진 올라갈 곳 -->
-					<img src="<%=vo.getSale_photo()%>">
+					<img src="./file/<%=vo.getSale_photo()%>" width="500PX">
 				</div>
 								<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
 					<form>

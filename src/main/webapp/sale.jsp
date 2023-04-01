@@ -122,7 +122,7 @@
 					</tr>
 
 					<tr class="returnTr">
-						<th>매일 불가 상품 처리 방법</th>
+						<th>매입 불가 상품 처리 방법</th>
 						<td><input type="radio" name="sale_check" id="dispose"
 							value="폐기" style="display: inline"> <label for="dispose" style="display: inline">폐기</label> <input
 							type="radio" name="sale_check" id="return" value="반송" style="display: inline"> <label
